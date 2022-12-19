@@ -21,9 +21,18 @@
         "node": true
     },
     "rules": {
+        "prettier/prettier": [
+            "error",
+            {
+                "endOfLine": "auto"
+            }
+        ],
+        "arrow-body-style": "off",
+        "prefer-arrow-callback": "off",
         "no-debugger": "off",
         "no-console": 0,
         "class-methods-use-this": "off",
         "@typescript-eslint/no-explicit-any": 2
     }
 }
+
