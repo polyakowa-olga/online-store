@@ -9,6 +9,9 @@ import logo from "./assets/images/logo.jpg";
 import { test } from "./exampl";
 import { component } from "./components/item/item";
 
+import data from "./assets/data.json";
+import { filter } from "./components/filter.ts";
+console.log(filter(data.products, "category", "laptops"));
 
 // function component(text) {
 //   const element = document.createElement("h1");
