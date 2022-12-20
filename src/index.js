@@ -7,4 +7,25 @@ import logo from "./assets/images/logo.jpg";
 
 import { showProducts } from "./components/main/products";
 showProducts();
+import { test } from "./exampl";
+import { component } from "./components/item/item";
+
+import data from "./assets/data.json";
+import { filter } from "./components/filter.ts";
+console.log(filter(data.products, "category", "laptops"));
+
+// function component(text) {
+//   const element = document.createElement("h1");
+//   element.textContent = text;
+//   return element;
+// }
+
+test("hello, TS файл работает");
+component();
+
+
+
+// for (let i = 0; i <= data.products.length; i++) {
+//   document.body.appendChild(component(data.products[i].title));
+// }
 
