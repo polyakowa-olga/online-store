@@ -1,19 +1,19 @@
 
 
 //abstracts
-@import "././scss/abstracts/variables";
-@import "././scss/abstracts/mixins";
-@import "././scss/abstracts/fonts";
+@import "./assets/scss/abstracts/variables";
+@import "./assets/scss/abstracts/mixins";
+@import "./assets/scss/abstracts/fonts";
 
 //base
-@import "././scss/base/reset";
-@import "././scss/base/base";
+@import "./assets/scss/base/reset";
+@import "./assets/scss/base/base";
 
 //components
-@import "././scss/components/links";
+@import "./assets/scss/components/links";
 
 //layout
-@import "././scss/layout/footer";
-@import "././scss/layout/header";
+@import "./assets/scss/layout/footer";
+@import "./assets/scss/layout/header";
  
 
