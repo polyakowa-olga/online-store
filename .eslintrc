@@ -28,6 +28,7 @@
             }
         ],
         "arrow-body-style": "off",
+
         "@typescript-eslint/no-var-requires": "error",
         "prefer-arrow-callback": "off",
         "no-debugger": "off",
@@ -36,3 +37,4 @@
         "@typescript-eslint/no-explicit-any": 2
     }
 }
+

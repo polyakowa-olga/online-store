@@ -1,0 +1,43 @@
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+
+    background-color: $color_base-dark;
+
+    padding: 1em 2em;
+
+}
+
+.header__logo {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    
+    background-color: wheat;
+
+}
+
+.logo__img {
+    width: 100px;
+    height: 100px;
+    background-image: './images/logo.jpg';
+    background-size: cover;
+}
+
+.header__sum-box {
+    width: 100px;
+    height: 100px;
+    background: white;
+        background-image: 'cart.png';
+    background-size: cover;
+}
+
+.header__basket {
+    width: 100px;
+    height: 100px;
+
+}
