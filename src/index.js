@@ -12,6 +12,9 @@ import { showProducts } from "./components/main/products";
 import data from "./assets/data.json";
 import { drawFilterSection } from "./components/filter.ts";
 
+import data from "./assets/data.json";
+import { filter } from "./components/filter.ts";
+console.log(filter(data.products, "category", "laptops"));
 
 // function component(text) {
 //   const element = document.createElement("h1");
