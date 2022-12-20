@@ -1,15 +1,17 @@
-$font-size: 1rem;
-$font-color: lch(28 99 35);
 
-html {
-  font-size: $font-size;
-  color: $font-color;
-}
+//abstracts
+@import "././scss/abstracts/variables";
+@import "././scss/abstracts/mixins";
+@import "././scss/abstracts/fonts";
 
-.logo1 {
-  width: 10em;
-}
+//base
+@import "././scss/base/reset";
+@import "././scss/base/base";
 
-.logo2 {
-  width: 10em;
-}
+//components
+@import "././scss/components/links";
+
+//layout
+@import "././scss/layout/footer";
+@import "././scss/layout/header";
+ 
