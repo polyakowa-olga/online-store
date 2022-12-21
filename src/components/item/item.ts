@@ -30,11 +30,17 @@ export function component(
   const nameElement = document.createElement("h1");
   const infoElement = document.createElement("div");
   const categoryElement = document.createElement("p");
+  const categoryElementSpan = document.createElement("span");
   const brandElement = document.createElement("p");
+  const brandElementSpan = document.createElement("span");
   const priceElement = document.createElement("p");
+  const priceElementSpan = document.createElement("span");
   const discountElement = document.createElement("p");
+  const discountElementSpan = document.createElement("span");
   const ratingElement = document.createElement("p");
+  const ratingElementSpan = document.createElement("span");
   const stockElement = document.createElement("p");
+  const stockElementSpan = document.createElement("span");
 
   const buttonsElement = document.createElement("div");
   const buttonAddCard = document.createElement("button");
@@ -50,10 +56,17 @@ export function component(
   itemText.append(infoElement);
 
   infoElement.append(categoryElement);
+  categoryElement.append(categoryElementSpan);
   infoElement.append(brandElement);
+  brandElement.append(brandElementSpan);
+  infoElement.append(priceElement);
+  priceElement.append(priceElementSpan);
   infoElement.append(discountElement);
+  discountElement.append(discountElementSpan);
   infoElement.append(ratingElement);
+  ratingElement.append(ratingElementSpan);
   infoElement.append(stockElement);
+  stockElement.append(stockElementSpan);
 
   blockElement.classList.add("block-element");
   productItem.classList.add("product-item");
@@ -62,15 +75,35 @@ export function component(
   infoElement.classList.add("info-element");
   itemText.classList.add("item-text");
   buttonsElement.classList.add("buttons-element");
+  categoryElementSpan.classList.add("infoes-element");
+  brandElementSpan.classList.add("infoes-element");
+  priceElementSpan.classList.add("infoes-element");
+  discountElementSpan.classList.add("infoes-element");
+  ratingElementSpan.classList.add("infoes-element");
+  stockElementSpan.classList.add("infoes-element");
 
   nameElement.innerText = name;
   imgElement.src = path;
-  categoryElement.innerText = `Category: ${category}`;
-  brandElement.innerText = `Brand: ${brand}`;
-  priceElement.innerText = `Price: €${price}`;
+  categoryElementSpan.innerText = category;
+  categoryElement.innerHTML = categoryElement.innerText =
+    `Category: ` + categoryElementSpan.outerHTML;
+  brandElementSpan.innerText = brand;
+  brandElement.innerHTML = brandElement.innerText =
+    `Brand: ` + brandElementSpan.outerHTML;
+  priceElementSpan.innerText = `€${price}`;
+  priceElement.innerHTML = priceElement.innerText =
+    `Price: ` + priceElementSpan.outerHTML;
   discountElement.innerText = `discount: ${discount}%`;
-  ratingElement.innerText = `Rating: ${rating}`;
-  stockElement.innerText = `Rating: ${stock}`;
+  discountElementSpan.innerText = `${discount}%`;
+  discountElement.innerHTML = discountElement.innerText =
+    `discount: ` + discountElementSpan.outerHTML;
+  ratingElementSpan.innerText = `${rating}`;
+  ratingElement.innerHTML = ratingElement.innerText =
+    `Rating: ` + ratingElementSpan.outerHTML;
+  stockElement.innerText = `Rating: `;
+  stockElementSpan.innerText = `${stock}`;
+  stockElement.innerHTML = stockElement.innerText =
+    `Stock: ` + stockElementSpan.outerHTML;
   buttonAddCard.innerText = "ADD TO CART";
   buttondetailsCard.innerText = "DETAILS";
 
