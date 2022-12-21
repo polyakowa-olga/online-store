@@ -1,5 +1,3 @@
-
-
 //abstracts
 @import "./assets/scss/abstracts/variables";
 @import "./assets/scss/abstracts/mixins";
@@ -11,9 +9,10 @@
 
 //components
 @import "./assets/scss/components/links";
+@import "./assets/scss/components/products";
+@import "./assets/scss/components/items";
+
 
 //layout
 @import "./assets/scss/layout/footer";
 @import "./assets/scss/layout/header";
- 
-
