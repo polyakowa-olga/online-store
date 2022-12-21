@@ -1,0 +1,74 @@
+.block-element {
+  width: 23%;
+  display: flex;
+  flex-direction: column;
+  padding: .5%;
+}
+
+.product-item {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  color: yellow;
+  border-radius: 10px;
+  border: 1px solid yellowgreen;
+}
+
+.img-element {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  top: 0;
+}
+
+.name-element {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  width: 100%;
+  font-size: 90%;
+  text-align: center;
+  position: relative;
+  background: rgba(24, 26, 28, .8);
+  z-index: 1;
+  border-bottom: 1px solid yellowgreen;
+}
+
+.info-element {
+  position: relative;
+  z-index: 1;
+  width: 55%;
+  border-bottom-right-radius: 5px;
+  border: 1px solid yellowgreen;
+  background-color: rgb(233, 127, 127);
+}
+
+.info-element>p {
+  font-size: .6rem;
+}
+
+.item-text {
+  width: 100%;
+  height: 83%;
+  padding-bottom: 20%;
+}
+
+.buttons-element {
+  width: 100%;
+  height: 15%;
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  z-index: 1;
+}
+
+.buttons-element>button {
+  background-color: #181a1c;
+  border: 1px solid orange;
+  border-radius: 0.3rem;
+  padding-left: 2%;
+  padding-right: 2%;
+  font-size: 55%;
+  color: yellowgreen;
+  cursor: pointer;
+}
