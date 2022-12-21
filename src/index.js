@@ -7,3 +7,4 @@ import logo from "./assets/images/logo.jpg";
 
 import { showProducts } from "./components/main/products";
 showProducts();
+
