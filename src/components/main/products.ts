@@ -24,7 +24,7 @@ export function showProducts() {
     const discount = Element.discountPercentage;
     const rating = Element.rating;
     const stock = Element.stock;
-    productsItems.appendChild(
+   productsItems.appendChild(
       component(name, path, brand, category, price, discount, rating, stock)
     );
   }

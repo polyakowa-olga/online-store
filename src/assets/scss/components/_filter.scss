@@ -1,0 +1,203 @@
+._filter-box {
+    width: 100%;
+    border: solid 2px $color_base-light;
+    border-radius: 5px;
+    background-color: $color_base-white;
+    padding: 0.5em;
+}
+
+.filter-container {
+    background-color: $color_base-dark;
+    @include flex-between ($direction: column);
+    border-radius: 5px;
+    padding: 0.5em;
+}
+
+.filter-btns {
+    width: 100%;
+    @include flex();
+    flex-wrap: nowrap;
+}
+
+.filter-params {
+    @include flex-between ($direction: column);
+}
+
+.filter-title {
+  margin: 0.5em;
+}
+.category {
+
+}
+.brand {
+
+}
+.price {
+
+}
+.stock {
+
+}
+
+////////// range //////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+div.range-input {
+    position: relative;
+    width: 300px;
+    height: 100px;
+    float: none;
+    text-align: center;
+    background-color: $color_base-light;
+    color: white;
+    border-radius: 3px;
+    }
+      
+    input[type="range"] {
+      pointer-events: none;
+      position: absolute;
+      -webkit-appearance: none;
+      -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+      border: none;
+      border-radius: 5px;
+      background: $color_range_input;
+      box-shadow: inset 0 1px 0 0 darken($color_range_input,15%), inset 0 -1px 0 0 darken($color_range_input,10%);
+      -webkit-box-shadow: inset 0 1px 0 0 darken($color_range_input,15%), inset 0 -1px 0 0 darken($color_range_input,10%);
+      overflow: hidden;
+      left: 0;
+      top: 50px;
+      width: 100%;
+      outline: none;
+      height: 1em;
+      margin: 0;
+      padding: 0;
+    }  
+    
+    input[type="range"]::-webkit-slider-thumb {
+      pointer-events: all;
+      position: relative;
+      z-index: 1;
+      outline: 0;    
+      -webkit-appearance: none;
+      width: 1em;
+      height: 1em;
+      border: none;
+      border-radius: 50%;
+      background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, lighten($color_range_thumb,60%)), color-stop(100%, $color_range_thumb));
+      background-image: -webkit-linear-gradient(top , lighten($color_range_thumb,60%) 0, $color_range_thumb 100%);
+      background-image: linear-gradient(to bottom, lighten($color_range_thumb,60%) 0, $color_range_thumb 100%);
+    }
+    
+    input[type="range"]::-moz-range-thumb {
+      pointer-events: all;
+      position: relative;
+      z-index: 10;
+      -moz-appearance: none;
+      width: 1em;
+      height: 1em;
+      border: none;
+      border-radius: 50%;
+      background-image: linear-gradient(to bottom, lighten($color_range_thumb,60%) 0, $color_range_thumb 100%);
+    }
+  
+    input[type="range"]::-ms-thumb {
+      pointer-events: all;
+      position: relative;
+      z-index: 10;
+      -ms-appearance: none;
+      width: 1em;
+      height: 1em;
+      border-radius: 50%;
+      border: 0;
+      background-image: linear-gradient(to bottom, lighten($color_range_thumb,60%) 0, $color_range_thumb 100%);
+    }
+    
+    input[type=range]::-moz-range-track {
+      position: relative;
+      z-index: -1;
+      background-color: $color_btn_base;
+      border: 0;
+    }
+    
+    input[type=range]:last-of-type::-moz-range-track {
+      -moz-appearance: none;
+      background: none transparent;
+      border: 0;
+    } 
+    
+    input[type=range]::-moz-focus-outer {
+      border: 0;
+    }
+
+  
+
+
+  
+
+  ////// checkbox ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+  .filter-list__item {
+    background-color: $color_base-light;
+    color: white;
+    border-radius: 5px;
+    padding: 0.1em;
+
+    @include flex-between();
+  }
+
+  .items-amount {
+ //   margin-left: auto;
+  }
+
+.input-box {
+    position: relative;
+    padding-left: 35px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  .input-box .real-input {
+    position: absolute;
+    opacity: 0;
+  }
+
+  .mask-input {
+    border-radius: 3px;
+    position: absolute;
+    top: 1px;
+    left: 0;
+    height: 1em;
+    width: 1em;
+    background-color: $color_base-white;
+  }
+
+  .input-box:hover .real-input ~ .mask-input {
+    background-color: yellow;
+  }
+
+  .input-box .real-input:checked ~ .mask-input {
+    background-color: $color_btn_base;
+  }
+
+  .mask-input:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+
+  .input-box .real-input:checked ~ .mask-input:after {
+    display: block;
+  }
+
+  .input-box .mask-input:after {
+    left: 4px;
+    top: 0px;
+    width: 8px;
+    height: 12px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+  }
