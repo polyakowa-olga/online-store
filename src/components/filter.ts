@@ -1,17 +1,16 @@
 import { IProducts } from "./item/item";
 
 export function drawFilterSection(arr: IProducts[]) {
+  const mainFilterBox = document.getElementById("filter_container");
   drawBtnBox();
   const arrCategory = getFilterParam(arr, "category");
   drawCheckboxFilter("Category", "fl-category", "category", arrCategory);
   const arrBrand = getFilterParam(arr, "brand");
   drawCheckboxFilter("Brand", "fl-brand", "brand", arrBrand);
-  drawCheckboxFilter("Price", "fl-price");
-  drawCheckboxFilter("Stock", "fl-stock");
+  drawRangeboxFilter("Price", "fl-price");
+  drawRangeboxFilter("Stock", "fl-stock");
 
   function drawBtnBox(): void {
-    const mainFilterBox = document.getElementById("filter_container");
-
     const btnBox = document.createElement("div");
     btnBox.classList.add("filter-btns");
     mainFilterBox?.append(btnBox);
@@ -32,11 +31,42 @@ export function drawFilterSection(arr: IProducts[]) {
   function drawCheckboxFilter(
     name: string,
     id: string,
-    param?: string,
-    arr?: [string, number][]
+    param: string,
+    arr: [string, number][]
   ): void {
-    const mainFilterBox = document.getElementById("filter_container");
+    const paramBox = document.createElement("div");
+    paramBox.classList.add("filter-params");
 
+    mainFilterBox?.append(paramBox);
+
+    const category = document.createElement("div");
+    category.classList.add("category");
+    category.classList.add("_filter-box");
+    category.innerHTML = `
+  <h3 class="filter-title">${name}</h3>
+  <div class="filter-list-wrapper">
+  <div class="filter-list" id=${id}>
+  </div>
+  </div>
+  `;
+    paramBox.append(category);
+    let filter_list = document.querySelector(`#${id}`);
+    filter_list!.innerHTML = "";
+
+    arr.forEach((el) => {
+      filter_list!.innerHTML += `
+        <div class="filter-list__item">
+<label class="input-box">${el[0]}
+  <input type="checkbox" class="real-input">
+  <span class="mask-input"></span>
+</label>
+  <span class="items-amount">(${el[1]}/${el[1]})</span>
+</div>
+`;
+    });
+  }
+
+  function drawRangeboxFilter(name: string, id: string): void {
     const paramBox = document.createElement("div");
     paramBox.classList.add("filter-params");
 
@@ -53,19 +83,7 @@ export function drawFilterSection(arr: IProducts[]) {
     paramBox.append(category);
     let filter_list = document.querySelector(`#${id}`);
     filter_list!.innerHTML = "";
-    if (name === "Category" || name === "Brand") {
-      arr.forEach((el) => {
-        filter_list!.innerHTML += `
-        <div class="filter-list__item">
-<label class="input-box">${el[0]}
-  <input type="checkbox" class="real-input">
-  <span class="mask-input"></span>
-</label>
-  <span class="items-amount">(${el[1]}/${el[1]})</span>
-</div>
-`;
-      });
-    }
+
     if (name === "Price") {
       filter_list!.innerHTML = `
   <div class="range-input">
@@ -88,7 +106,7 @@ export function drawFilterSection(arr: IProducts[]) {
 
   function getFilterParam(arr: IProducts[], param: string): [string, number][] {
     const result: [string, number][] = [];
-    let arrParams: string[] = [];
+    const arrParams: string[] = [];
 
     arr.forEach((el) => {
       if (param === "category" || param === "brand") {
@@ -96,7 +114,7 @@ export function drawFilterSection(arr: IProducts[]) {
       }
     });
 
-    let uniqParam = new Set(arrParams);
+    const uniqParam = new Set(arrParams);
 
     uniqParam.forEach((el) => {
       let amount = 0;
@@ -114,22 +132,19 @@ export function drawFilterSection(arr: IProducts[]) {
   }
 }
 
-
-  export function filter(
-    arr: IProducts[],
-    param: string,
-    value: string
-  ): number[] {
-    const result: number[] = [];
-    arr.forEach((el) => {
-      if (param === "category" || param === "brand") {
-        if (el[param] === value) {
-          result.push(el.id);
-        }
+export function filter(
+  arr: IProducts[],
+  param: string,
+  value: string
+): number[] {
+  const result: number[] = [];
+  arr.forEach((el) => {
+    if (param === "category" || param === "brand") {
+      if (el[param] === value) {
+        result.push(el.id);
       }
-    });
+    }
+  });
 
-    return result;
-  }
-
-
+  return result;
+}
