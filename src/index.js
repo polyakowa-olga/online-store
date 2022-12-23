@@ -11,3 +11,5 @@ showProducts();
 import data from "./assets/data.json";
 import { drawFilterSection } from "./components/filter.ts";
 drawFilterSection(data.products);
+
+
