@@ -78,7 +78,8 @@ export function component(
   itemText.classList.add("item-text");
   buttonsElement.classList.add("buttons-element");
 
-categoryElementSpan.classList.add("infoes-element");
+  categoryElementSpan.classList.add("infoes-element");
+
   brandElementSpan.classList.add("infoes-element");
   priceElementSpan.classList.add("infoes-element");
   discountElementSpan.classList.add("infoes-element");
