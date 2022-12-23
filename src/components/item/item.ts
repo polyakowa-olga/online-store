@@ -56,6 +56,7 @@ export function component(
   itemText.append(infoElement);
 
   infoElement.append(categoryElement);
+
   categoryElement.append(categoryElementSpan);
   infoElement.append(brandElement);
   brandElement.append(brandElementSpan);
@@ -68,6 +69,7 @@ export function component(
   infoElement.append(stockElement);
   stockElement.append(stockElementSpan);
 
+
   blockElement.classList.add("block-element");
   productItem.classList.add("product-item");
   imgElement.classList.add("img-element");
@@ -75,7 +77,8 @@ export function component(
   infoElement.classList.add("info-element");
   itemText.classList.add("item-text");
   buttonsElement.classList.add("buttons-element");
-  categoryElementSpan.classList.add("infoes-element");
+
+categoryElementSpan.classList.add("infoes-element");
   brandElementSpan.classList.add("infoes-element");
   priceElementSpan.classList.add("infoes-element");
   discountElementSpan.classList.add("infoes-element");
@@ -104,6 +107,7 @@ export function component(
   stockElementSpan.innerText = `${stock}`;
   stockElement.innerHTML = stockElement.innerText =
     `Stock: ` + stockElementSpan.outerHTML;
+
   buttonAddCard.innerText = "ADD TO CART";
   buttondetailsCard.innerText = "DETAILS";
 
