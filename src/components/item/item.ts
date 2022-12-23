@@ -69,6 +69,7 @@ export function component(
   infoElement.append(stockElement);
   stockElement.append(stockElementSpan);
 
+
   blockElement.classList.add("block-element");
   productItem.classList.add("product-item");
   imgElement.classList.add("img-element");
@@ -78,6 +79,7 @@ export function component(
   buttonsElement.classList.add("buttons-element");
 
   categoryElementSpan.classList.add("infoes-element");
+
   brandElementSpan.classList.add("infoes-element");
   priceElementSpan.classList.add("infoes-element");
   discountElementSpan.classList.add("infoes-element");
