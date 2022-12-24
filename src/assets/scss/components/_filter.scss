@@ -84,6 +84,7 @@ input[type="range"] {
 }
 
 input[type="range"]::-webkit-slider-thumb {
+  cursor: pointer;
   pointer-events: all;
   position: relative;
   z-index: 1;
@@ -99,6 +100,7 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 input[type="range"]::-moz-range-thumb {
+  cursor: pointer;
   pointer-events: all;
   position: relative;
   z-index: 10;
@@ -111,6 +113,7 @@ input[type="range"]::-moz-range-thumb {
 }
 
 input[type="range"]::-ms-thumb {
+  cursor: pointer;
   pointer-events: all;
   position: relative;
   z-index: 10;
@@ -139,7 +142,10 @@ input[type=range]::-moz-focus-outer {
   border: 0;
 }
 
-
+.values {
+  height: 50px;
+  @include flex-center();
+}
 
 
 

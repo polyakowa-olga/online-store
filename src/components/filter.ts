@@ -10,6 +10,22 @@ export function drawFilterSection(arr: IProducts[]) {
   drawRangeboxFilter("Price", "fl-price");
   drawRangeboxFilter("Stock", "fl-stock");
 
+  window.onload = function (): void {
+    const sliderContainers = document.getElementsByClassName("range-input");
+    console.log(sliderContainers);
+    for (var i = 0; i < sliderContainers.length; i++) {
+      const sliders: HTMLCollectionOf<HTMLInputElement> =
+        sliderContainers[i].getElementsByTagName("input");
+      for (let j = 0; j < sliders.length; j++) {
+        let inp: HTMLInputElement = sliders[j];
+        if (inp.type === "range") {
+          inp.oninput = getValues;
+          inp.oninput();
+        }
+      }
+    }
+  };
+
   function drawBtnBox(): void {
     const btnBox = document.createElement("div");
     btnBox.classList.add("filter-btns");
@@ -129,6 +145,26 @@ export function drawFilterSection(arr: IProducts[]) {
     });
 
     return result;
+  }
+
+  function getValues(): void {
+    const parent = this.parentNode;
+    const slides = parent.getElementsByTagName("input");
+    console.log(slides);
+    let slide1 = parseInt(slides[0].value);
+    let slide2 = parseInt(slides[1].value);
+    if (slide1 > slide2) {
+      let temp = slide2;
+      slide2 = slide1;
+      slide1 = temp;
+    }
+
+    let displayElement = parent.getElementsByClassName("values")[0];
+    if (displayElement.closest("#fl-price")) {
+      displayElement.innerHTML = `$${slide1}   ⟷   $${slide2}`;
+    } else {
+      displayElement.innerHTML = `${slide1}   ⟷   ${slide2}`;
+    }
   }
 }
 
