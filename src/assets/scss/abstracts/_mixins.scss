@@ -3,7 +3,7 @@
     flex-direction: $direction;
     justify-content: flex-start;
     align-items: center;
-    gap: 5px;
+    gap: 0.5em;
     flex-wrap: wrap;
 }
 
@@ -12,7 +12,7 @@
     flex-direction: $direction;
     justify-content: space-between;
     align-items: center;
-    gap: 5px;
+    gap: 0.5em;
     flex-wrap: wrap;
 }
 
@@ -21,6 +21,6 @@
     flex-direction: $direction;
     justify-content: center;
     align-items: center;
-    gap: 5px;
+    gap: 0.5em;
     flex-wrap: wrap;
 }

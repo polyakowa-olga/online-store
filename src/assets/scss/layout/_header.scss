@@ -16,7 +16,7 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    
+    border-radius: 5px;
     background-color: wheat;
 
 }
@@ -28,16 +28,32 @@
     background-size: cover;
 }
 
+.logo__text {
+    font-size: 48px;
+}
 .header__sum-box {
     width: 100px;
-    height: 100px;
-    background: white;
-        background-image: 'cart.png';
-    background-size: cover;
+    height: 50px;
+    background: wheat;
+    @include flex-center();
+    border-radius: 5px;
 }
 
 .header__basket {
-    width: 100px;
+    width: 200px;
     height: 100px;
+    background: wheat;
+    border-radius: 5px;
+    padding: 10px;
+    @include flex-between();
+    font-size: 24px;
+}
 
+.basket__item-amount {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: $color_base-light;
+    color: white;
+    @include flex-center();
 }
