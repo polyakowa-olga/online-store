@@ -1,15 +1,19 @@
-import "./main.scss";
+ import "./main.scss";
 
 import github_icon_128848 from "./assets/images/github_icon_128848.svg";
 import rs_school_js from "./assets/images/rs_school_js.svg";
 import cart from "./assets/images/cart.png";
 import logo from "./assets/images/novogodnjaja-jolka.png";
 
-import { showProducts } from "./components/main/products";
-showProducts();
+// import { showProducts } from "./components/main/products";
+// showProducts();
 
-import data from "./assets/data.json";
-import { drawFilterSection } from "./components/filter.ts";
-drawFilterSection(data.products);
+// import data from "./assets/data.json";
+// import { drawFilterSection } from "./components/filter.ts";
+// drawFilterSection(data.products);
 
 
+import App from './components/app/app';
+
+const app = new App();
+app.run();
