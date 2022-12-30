@@ -1,8 +1,8 @@
 import IProducts from "./prodacts";
 import Element from "./element";
 
-class Filter  extends Element{
-    arr:  IProducts[]
+class Filter extends Element{
+    arr: IProducts[]
 
     constructor(tag: string, className: string, arr: IProducts[]) {
       super(tag, className);
@@ -12,7 +12,6 @@ class Filter  extends Element{
     drawBtnBox() {
       const btnBox = document.createElement("div");
       btnBox.classList.add("filter-btns");
-      this.container.append(btnBox);
 
       const btnReset = document.createElement("button");
       btnReset.classList.add("btn");
@@ -27,19 +26,26 @@ class Filter  extends Element{
       btnCopy.classList.add("copy");
       btnCopy.textContent = "Copy Link";
       btnBox.append(btnCopy);
+
+      return btnBox
     }
-  
+
+    drawFilterMainBox() {
+      const filterMainBox = document.createElement("div");
+      filterMainBox.classList.add("filter-params");
+      this.drawCheckboxFilter("Category", "fl-category");
+
+      return filterMainBox;
+    }
+
     drawCheckboxFilter(
       name: string,
       id: string,
-      param: string,
-      arr: [string, number][],
-      mainFilterBox: HTMLElement
-    ): void {
-      const paramBox = document.createElement("div");
-      paramBox.classList.add("filter-params");
-  
-      mainFilterBox?.append(paramBox);
+      // param: string,
+      // arr: [string, number][],
+      //mainFilterBox: HTMLElement
+    ) {
+      const paramBox = document.querySelector(".filter-params");
   
       const category = document.createElement("div");
       category.classList.add("category");
@@ -51,21 +57,22 @@ class Filter  extends Element{
     </div>
     </div>
     `;
-      paramBox.append(category);
-      const filter_list = document.querySelector(`#${id}`);
-      filter_list!.innerHTML = "";
+      paramBox?.append(category);
+      // const filter_list = document.querySelector(`#${id}`);
+      // filter_list!.innerHTML = "";
   
-      arr.forEach((el) => {
-        filter_list!.innerHTML += `
-          <div class="filter-list__item">
-  <label class="input-box">${el[0]}
-    <input type="checkbox" class="real-input">
-    <span class="mask-input"></span>
-  </label>
-    <span class="items-amount">(${el[1]}/${el[1]})</span>
-  </div>
-  `;
-      });
+  //     arr.forEach((el) => {
+  //       filter_list!.innerHTML += `
+  //         <div class="filter-list__item">
+  // <label class="input-box">${el[0]}
+  //   <input type="checkbox" class="real-input">
+  //   <span class="mask-input"></span>
+  // </label>
+  //   <span class="items-amount">(${el[1]}/${el[1]})</span>
+  // </div>
+  // `;
+  //     });
+  //return category;
     }
   
     drawRangeboxFilter(name: string, id: string, mainFilterBox: HTMLElement): void {
@@ -154,12 +161,16 @@ class Filter  extends Element{
 //     }
   
     render() {
-     
-     //   document.getElementById("filter_container")!;
+    this.container.append(this.drawBtnBox());
+    this.container.append(this.drawFilterMainBox());
+    
+      // const mainFilterBox = document.createElement('div');
+      // mainFilterBox.classList.add('filter-params');
+      // this.container.append(mainFilterBox);
+      
 
-      this.drawBtnBox();
       // const arrCategory = this.getFilterParam(this.arr, "category");
-      // this.drawCheckboxFilter("Category", "fl-category", "category", arrCategory, this.container);
+     //  this.drawCheckboxFilter("Category", "fl-category", mainFilterBox);//, "category", arrCategory
       // const arrBrand = this.getFilterParam(this.arr, "brand");
       // this.drawCheckboxFilter("Brand", "fl-brand", "brand", arrBrand, this.container);
       // this.drawRangeboxFilter("Price", "fl-price", this.container);

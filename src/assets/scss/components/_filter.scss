@@ -24,6 +24,9 @@
 
 .filter-params {
   @include flex-between ($direction: column);
+  width: 200px;
+  height: 200px;
+  background-color: aqua;
 
 }
 

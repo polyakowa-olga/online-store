@@ -53,7 +53,7 @@ class App {
 
   run() {
     App.container.prepend(this.header.render());
-    App.renderNewPage(PageId.MainPage);
+    App.renderNewPage(App.startPageID);
 
     this.knowHashchange();
   }
