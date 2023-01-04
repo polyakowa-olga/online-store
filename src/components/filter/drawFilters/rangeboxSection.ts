@@ -1,40 +1,65 @@
+function drawRangeboxFilter(
+  filterBox: HTMLElement,
+  name: string,
+  id: string
+) {
+  const category = document.createElement("div");
+  category.classList.add("category");
+  category.classList.add("_filter-box");
 
-function drawRangeboxFilter(filterBox: HTMLElement, name: string, id: string): void {
-    const paramBox = document.createElement("div");
-    paramBox.classList.add("filter-params");
+  const categoryTitle = document.createElement("h3");
+  categoryTitle.classList.add("filter-title");
+  categoryTitle.textContent = `${name}`;
+  category.append(categoryTitle);
 
-    filterBox?.append(paramBox);
+  const categoryList = document.createElement("div");
+  categoryList.classList.add("filter-list");
+  category.append(categoryList);
 
-    const category = document.createElement("div");
-    category.classList.add("category");
-    category.classList.add("_filter-box");
-    category.innerHTML = `
-    <h3 class="filter-title">${name}</h3>
-    <div class="filter-list" id=${id}>
-    </div>
-    `;
-    paramBox.append(category);
-    const filter_list = document.querySelector(`#${id}`);
-    filter_list!.innerHTML = "";
+  const inputsBox = document.createElement("div");
+  inputsBox.classList.add("range-input");
+  inputsBox.id = `${id}`;
+  categoryList.append(inputsBox);
 
-    if (name === "Price") {
-      filter_list!.innerHTML = `
-    <div class="range-input">
-    <span class="values"></span>
-    <input value="10" min="10" max="1749" step="1" type="range">
-    <input value="1749" min="10" max="1749" step="1" type="range">
-  </div> 
-    `;
-    }
-    if (name === "Stock") {
-      filter_list!.innerHTML = `
-    <div class="range-input">
-    <span class="values"></span>
-    <input value="2" min="2" max="150" step="1" type="range">
-    <input value="150" min="2" max="150" step="1" type="range">
-  </div>
-    `;
-    }
+  const values = document.createElement("span");
+  values.classList.add("values");
+  inputsBox.append(values);
+
+  if (name === "Price") {
+    const input_1 = document.createElement("input");
+    input_1.setAttribute('value', "10")
+    input_1.setAttribute('min', "10")
+    input_1.setAttribute('max', "1749")
+    input_1.setAttribute('step', "1")
+    input_1.setAttribute('type', "range")
+    inputsBox.append(input_1);
+
+    const input_2 = document.createElement("input");
+    input_2.setAttribute('value', "1749")
+    input_2.setAttribute('min', "10")
+    input_2.setAttribute('max', "1749")
+    input_2.setAttribute('step', "1")
+    input_2.setAttribute('type', "range")
+    inputsBox.append(input_2);
   }
+  if (name === "Stock") {
+    const input_1 = document.createElement("input");
+    input_1.setAttribute('value', "2")
+    input_1.setAttribute('min', "2")
+    input_1.setAttribute('max', "150")
+    input_1.setAttribute('step', "1")
+    input_1.setAttribute('type', "range")
+    inputsBox.append(input_1);
 
-  export default drawRangeboxFilter;
+    const input_2 = document.createElement("input");
+    input_2.setAttribute('value', "150")
+    input_2.setAttribute('min', "2")
+    input_2.setAttribute('max', "150")
+    input_2.setAttribute('step', "1")
+    input_2.setAttribute('type', "range")
+    inputsBox.append(input_2);
+  }
+  filterBox.append(category);
+}
+
+export default drawRangeboxFilter;
