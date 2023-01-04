@@ -166,57 +166,34 @@ input[type=range]::-moz-focus-outer {
 }
 
 .input-box {
-  position: relative;
-  padding-left: 35px;
+  @include flex();
+  padding-left: 5px;
   cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
 }
 
-.input-box .real-input {
-  position: absolute;
-  opacity: 0;
-}
-
-.mask-input {
+.mark-input {
   border-radius: 3px;
-  position: absolute;
-  top: 0px;
-  left: 0;
-  height: 1em;
-  width: 1em;
+  height: 5px;
+  width: 5px;
   background-color: $color_base-light;
   border: solid 1px rgb(154, 205, 50);
 }
 
-.input-box:hover .real-input~.mask-input {
-  background-color: yellow;
+.mark-input.active {
+  border-radius: 3px;
+  height: 6px;
+  width: 6px;
+  background-color: $color_btn_hover;
+  border: solid 1px rgb(154, 205, 50);
 }
 
-.input-box .real-input:checked~.mask-input {
-  background-color: $color_btn_base;
+.text-input {
+  font-size: 20px;
 }
 
-.mask-input:after {
-  content: "";
-  position: absolute;
-  display: none;
-}
+.text-input.active {
+  color: rgb(154, 205, 50);;
 
-.input-box .real-input:checked~.mask-input:after {
-  display: block;
-}
-
-.input-box .mask-input:after {
-  left: 4px;
-  top: 0px;
-  width: 8px;
-  height: 12px;
-  border: solid white;
-  border-width: 0 3px 3px 0;
-  transform: rotate(45deg);
 }
 
 //полоса прокрутки

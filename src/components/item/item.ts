@@ -13,6 +13,7 @@ export interface IProducts {
 }
 
 export function component(
+  id: number, // olga
   name: string,
   path: string,
   brand: string,
@@ -69,7 +70,6 @@ export function component(
   infoElement.append(stockElement);
   stockElement.append(stockElementSpan);
 
-
   blockElement.classList.add("block-element");
   productItem.classList.add("product-item");
   imgElement.classList.add("img-element");
@@ -86,6 +86,7 @@ export function component(
   ratingElementSpan.classList.add("infoes-element");
   stockElementSpan.classList.add("infoes-element");
 
+  blockElement.setAttribute("id", `${id}`); // olga
   nameElement.innerText = name;
   imgElement.src = path;
   categoryElementSpan.innerText = category;

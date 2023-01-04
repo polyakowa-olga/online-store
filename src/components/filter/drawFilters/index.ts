@@ -1,14 +1,13 @@
 import { IProducts } from "../../item/item";
 import { getFilterParam } from "./filterParam";
+import drawBtnBox from "./buttonBox";
 import drawCheckboxFilter from "./checkboxSection";
 import drawRangeboxFilter from "./rangeboxSection";
-import { checkValues } from "../dualSlider";
-import drawBtnBox from "./buttonBox";
-import { getInputValue } from "../drawFilters/checkbox";
-import { getRangeValues } from "../listeners";
 
 export function drawFilterSection(arr: IProducts[]) {
-  const mainBox = document.getElementById("filter_container")!;
+  const mainBox = document.getElementById("filter_container");
+  if (!mainBox)
+    throw new Error('Error! Element with class "filter_container" not found!');
 
   mainBox.append(drawBtnBox());
 
@@ -30,9 +29,4 @@ export function drawFilterSection(arr: IProducts[]) {
 
   drawRangeboxFilter(paramBox, "Price", "fl-price");
   drawRangeboxFilter(paramBox, "Stock", "fl-stock");
-
-  window.onload = checkValues;
-  paramBox.addEventListener("click", getInputValue);
-
-  getRangeValues();
 }

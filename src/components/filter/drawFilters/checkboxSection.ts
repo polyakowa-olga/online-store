@@ -8,27 +8,49 @@ function drawCheckboxFilter(
   const category = document.createElement("div");
   category.classList.add("category");
   category.classList.add("_filter-box");
-  category.innerHTML = `
-  <h3 class="filter-title">${name}</h3>
-  <div class="filter-list-wrapper">
-  <div class="filter-list" id=${id}>
-  </div>
-  </div>
-  `;
+
+  const categoryTitle = document.createElement("h3");
+  categoryTitle.classList.add("filter-title");
+  categoryTitle.textContent = `${name}`;
+  category.append(categoryTitle);
+
+  const categoryListWrapper = document.createElement("div");
+  categoryListWrapper.classList.add("filter-list-wrapper");
+  category.append(categoryListWrapper);
+
+  const categoryList = document.createElement("div");
+  categoryList.classList.add("filter-list");
+  categoryList.id = `${id}`;
+  categoryListWrapper.append(categoryList);
+
   filterBox.append(category);
-  const filter_list = document.querySelector(`#${id}`);
-  filter_list!.innerHTML = "";
 
   arr.forEach((el) => {
-    filter_list!.innerHTML += `
-        <div class="filter-list__item">
-<label class="input-box">${el[0]}
-  <input type="checkbox" class="real-input" checked>
-  <span class="mask-input"></span>
-</label>
-  <span class="items-amount">(${el[1]}/${el[1]})</span>
-</div>
-`;
+    const categoryListItem = document.createElement("div");
+    categoryListItem.classList.add("filter-list__item");
+    categoryList.append(categoryListItem);
+
+    const categoryLabel = document.createElement("div");
+    categoryLabel.classList.add("input-box");
+
+    categoryListItem.append(categoryLabel);
+
+    const maskInput = document.createElement("div");
+    maskInput.classList.add("mark-input");
+    categoryLabel.append(maskInput);
+
+    const textInput = document.createElement("div");
+    textInput.classList.add("text-input");
+    textInput.textContent = `${el[0]}`;
+    categoryLabel.append(textInput);
+
+    const itemsAmount = document.createElement("span");
+    itemsAmount.classList.add("items-amount");
+    itemsAmount.textContent = `${el[1]}/${el[1]}`;
+    categoryListItem.append(itemsAmount);
+
+    categoryListItem.append(itemsAmount);
+    categoryList.append(categoryListItem);
   });
 }
 

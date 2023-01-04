@@ -4,16 +4,15 @@ export function checkValues() {
     const sliders: HTMLCollectionOf<HTMLInputElement> =
       sliderContainers[i].getElementsByTagName("input");
     for (let j = 0; j < sliders.length; j++) {
-      const inp: HTMLInputElement | null= sliders[j];
+      const inp: HTMLInputElement | null = sliders[j];
       if (inp.type === "range") {
-        inp.oninput = getValues;
-        inp.oninput();
+        inp.addEventListener("input", getValues);
       }
     }
   }
 }
 
-function getValues(this: Node) {
+export function getValues(this: ParentNode) {
   const parent = this.parentNode;
   if (parent) {
     const slides = parent.querySelectorAll("input");

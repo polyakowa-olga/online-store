@@ -67,6 +67,7 @@ export function showProducts() {
 
   for (let i = 0; i < data.products.length; i++) {
     const Element = data.products[i];
+    const id = Element.id; // olga
     const name = Element.title;
     const path = Element.thumbnail;
     const brand = Element.brand;
@@ -75,8 +76,8 @@ export function showProducts() {
     const discount = Element.discountPercentage;
     const rating = Element.rating;
     const stock = Element.stock;
-   productsItems.appendChild(
-      component(name, path, brand, category, price, discount, rating, stock)
+    productsItems.appendChild(
+      component(id, name, path, brand, category, price, discount, rating, stock) // id - olga
     );
   }
 }
