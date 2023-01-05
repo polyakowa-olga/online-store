@@ -1,3 +1,5 @@
+import { chooseParamsObj } from "./chooseParamsObj";
+
 export function checkValues() {
   const sliderContainers = document.getElementsByClassName("range-input");
   for (let i = 0; i < sliderContainers.length; i++) {
@@ -27,8 +29,12 @@ export function getValues(this: ParentNode) {
     const displayElement = parent.querySelectorAll(".values")[0];
     if (displayElement.closest("#fl-price")) {
       displayElement.innerHTML = `$${slide1}   ⟷   $${slide2}`;
+      chooseParamsObj.price = [];
+      chooseParamsObj.price.push(slide1, slide2);
     } else {
       displayElement.innerHTML = `${slide1}   ⟷   ${slide2}`;
+      chooseParamsObj.stock = [];
+      chooseParamsObj.stock.push(slide1, slide2);
     }
   }
 }

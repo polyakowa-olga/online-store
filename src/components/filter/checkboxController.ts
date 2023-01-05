@@ -1,28 +1,32 @@
-import { showFilterItems } from "./showFilterItems";
+import { IChooseParams } from "./chooseParamsObj";
 
-export const checkboxValues: string[] = [];
-
-export function getInputValue(event: Event) {
+export function getInputValue(
+  event: Event,
+  param: string,
+  filterParams: IChooseParams
+) {
   const ev = event.target as HTMLElement;
-  if (ev.closest(".input-box")) {
-    const nam = ev.closest(".input-box");
+  if (!ev.closest(".input-box")) return;
 
-    if (!nam || !nam.lastChild)
-      throw new Error('Error! Element with class "filter-params" not found!');
-    const content = nam.lastChild.textContent as string;
+  const checkboxValues: string[] = [];
+  const nam = ev.closest(".input-box");
 
-    if (checkboxValues.includes(content)) {
-      checkboxValues.splice(checkboxValues.indexOf(content));
+  if (!nam || !nam.lastChild)
+    throw new Error('Error! Element with class "filter-params" not found!');
+  const content = nam.lastChild.textContent as string;
+  if (param === "category" || param === "brand") {
+    if (filterParams[param].includes(content)) {
+      checkboxValues.push(content, "del");
       nam.childNodes.forEach((el) => {
         (<Element>el).classList.remove("active");
       });
     } else {
-      checkboxValues.push(content);
+      checkboxValues.push(content, "add");
       nam.childNodes.forEach((el) => {
         (<Element>el).classList.add("active");
       });
     }
   }
   console.log(checkboxValues);
-  showFilterItems(["1", "2"]);
+  return checkboxValues;
 }
