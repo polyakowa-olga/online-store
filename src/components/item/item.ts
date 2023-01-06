@@ -1,4 +1,5 @@
 import { openElement } from "../item/openItem";
+import { PageId } from ".././app"; // olga
 
 export interface IProducts {
   id: number;
@@ -47,7 +48,8 @@ export function component(Element: IProducts) {
 
   const buttonsElement = document.createElement("div");
   const buttonAddCard = document.createElement("button");
-  const buttondetailsCard = document.createElement("button");
+  // const buttondetailsCard = document.createElement("button");
+  const buttondetailsCard = document.createElement("a"); // olga
 
   blockElement.append(productItem);
   productItem.append(itemText);
@@ -115,10 +117,13 @@ export function component(Element: IProducts) {
   buttonAddCard.innerText = "ADD TO CART";
   buttondetailsCard.innerText = "DETAILS";
   buttondetailsCard.classList.add("open");
+  buttondetailsCard.href = `#${PageId.ItemPage}`; // olga
 
   buttondetailsCard.addEventListener("click", () => {
     openElement(Element);
   });
+
+
 
   return blockElement;
 }
