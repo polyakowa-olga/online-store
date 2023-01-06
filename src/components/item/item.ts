@@ -1,3 +1,5 @@
+import { openElement } from "../item/openItem";
+
 export interface IProducts {
   id: number;
   title: string;
@@ -12,17 +14,17 @@ export interface IProducts {
   images: string[];
 }
 
-export function component(
-  id: number, // olga
-  name: string,
-  path: string,
-  brand: string,
-  category: string,
-  price: number,
-  discount: number,
-  rating: number,
-  stock: number
-) {
+export function component(Element: IProducts) {
+  const id = Element.id;
+  const name = Element.title;
+  const path = Element.thumbnail;
+  const brand = Element.brand;
+  const category = Element.category;
+  const price = Element.price;
+  const discount = Element.discountPercentage;
+  const rating = Element.rating;
+  const stock = Element.stock;
+
   const blockElement = document.createElement("div");
   const productItem = document.createElement("div");
   const itemText = document.createElement("div");
@@ -112,6 +114,11 @@ export function component(
 
   buttonAddCard.innerText = "ADD TO CART";
   buttondetailsCard.innerText = "DETAILS";
+  buttondetailsCard.classList.add("open");
+
+  buttondetailsCard.addEventListener("click", () => {
+    openElement(Element);
+  });
 
   return blockElement;
 }

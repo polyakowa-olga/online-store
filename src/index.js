@@ -9,7 +9,5 @@ import { showProducts } from "./components/main/products";
 showProducts();
 
 import data from "./assets/data.json";
-import { createFilterSection } from "./components/filter/index"
+import { createFilterSection } from "./components/filter/index";
 createFilterSection(data.products);
-
-
