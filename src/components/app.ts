@@ -11,7 +11,7 @@ export const enum PageId {
   ItemPage = "item-page",
 }
 
-export function renderNewPage(idPage: string, i?: string) {
+export function renderNewPage(idPage: string, i?: number) {
   const mainSection = document.querySelector(".main");
   if (mainSection) {
     if (idPage === PageId.MainPage) {
@@ -32,7 +32,8 @@ export function renderNewPage(idPage: string, i?: string) {
     } else if (idPage === `${PageId.ItemPage}`) {
       mainSection.innerHTML = "";
       mainSection.setAttribute("id", `${idPage} `);
-      mainSection.append(openElement(data.products[i - 1])); // сюда нужно передать объект для отрисовки
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      mainSection.append(openElement(data.products[i!])); // сюда нужно передать объект для отрисовки
     } else if (idPage === PageId.CartPage) {
       mainSection.innerHTML = "";
       mainSection.setAttribute("id", `${idPage} `);
@@ -52,7 +53,7 @@ export function knowHashchange() {
     if (hash.length === 1) {
       return renderNewPage(hash[0]);
     } else {
-      const i = hash[1];
+      const i = Number(hash[1]) - 1;
       renderNewPage(hash[0], i);
     }
     // renderNewPage(hash);

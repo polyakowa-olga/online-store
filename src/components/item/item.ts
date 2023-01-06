@@ -91,7 +91,7 @@ export function component(Element: IProducts) {
   ratingElementSpan.classList.add("infoes-element");
   stockElementSpan.classList.add("infoes-element");
 
-  buttondetailsCard.setAttribute("id", `${id}`);
+  blockElement.setAttribute("id", `${id}`);
   nameElement.innerText = name;
   imgElement.src = path;
   categoryElementSpan.innerText = category;
