@@ -31,15 +31,18 @@ export function renderNewPage(idPage: string, i?: number) {
       mainSection.append(productsBox);
       showProducts();
     } else if (idPage === `${PageId.ItemPage}`) {
+      // document.location.search = "";
       mainSection.innerHTML = "";
       mainSection.setAttribute("id", `${idPage} `);
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       mainSection.append(openElement(data.products[i!])); // сюда нужно передать объект для отрисовки
     } else if (idPage === PageId.CartPage) {
+      // document.location.search = "";
       mainSection.innerHTML = "";
       mainSection.setAttribute("id", `${idPage} `);
       mainSection.append(createBasket());
     } else {
+      // document.location.search = "";
       mainSection.innerHTML = "";
       mainSection.setAttribute("id", "error-page");
       mainSection.append(showError());

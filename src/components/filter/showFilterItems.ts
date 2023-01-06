@@ -1,6 +1,8 @@
 import { getInputValue } from "./checkboxController";
 import { chooseParamsObj } from "./chooseParamsObj";
 import { sort } from "./chooseParamsObj";
+import { createQueryString } from "../createQueryString";
+import { updateParamsObj } from "../createQueryString";
 
 export function showFilterItems(event: Event) {
   const ev = event.target as HTMLElement;
@@ -25,7 +27,13 @@ export function showFilterItems(event: Event) {
     }
   }
   console.log(chooseParamsObj);
+  show();
 
+  // updateParamsObj();
+  // createQueryString(chooseParamsObj);
+}
+
+export function show() {
   const params: string[] = sort();
 
   console.log(params);

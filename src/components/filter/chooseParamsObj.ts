@@ -1,5 +1,6 @@
 import { IProducts } from "../item/item";
 import data = require("../../assets/data.json");
+import { show } from "./showFilterItems";
 
 export interface IChooseParams {
   category: string[];
@@ -8,7 +9,7 @@ export interface IChooseParams {
   stock: number[];
 }
 
-export const chooseParamsObj: IChooseParams = {
+export let chooseParamsObj: IChooseParams = {
   category: [],
   brand: [],
   price: [],
@@ -78,4 +79,52 @@ export function sort() {
     });
   }
   return res;
+}
+
+export function saveParamsObj() {
+  localStorage.setItem("ParamsObj", JSON.stringify(chooseParamsObj));
+}
+
+export function getParamsObj() {
+  if (localStorage.getItem("ParamsObj")) {
+    chooseParamsObj = JSON.parse(localStorage.getItem("ParamsObj"));
+
+    const list = document.querySelectorAll(".input-box");
+    list.forEach((el) => {
+      if (el.closest("#fl-category")) {
+        if (chooseParamsObj.category.includes(el.childNodes[1].textContent)) {
+          el.childNodes.forEach((element) => {
+            element.classList.add("active");
+          });
+        }
+      }
+      if (el.closest("#fl-brand")) {
+        if (chooseParamsObj.brand.includes(el.childNodes[1].textContent)) {
+          el.childNodes.forEach((element) => {
+            element.classList.add("active");
+          });
+        }
+      }
+    });
+
+    const input = document.querySelectorAll(".range-input");
+
+    input.forEach((el) => {
+      const slides = el.querySelectorAll("input");
+      if (el.closest("#fl-price") && chooseParamsObj.price.length) {
+        slides[0].value = `${chooseParamsObj.price[0]}`;
+        slides[1].value = `${chooseParamsObj.price[1]}`;
+      } else if (el.closest("#fl-stock") && chooseParamsObj.stock.length) {
+        slides[0].value = `${chooseParamsObj.stock[0]}`;
+        slides[1].value = `${chooseParamsObj.stock[1]}`;
+      } else {
+        slides[0].value = `${slides[0].getAttribute("min")}`;
+        slides[1].value = `${slides[1].getAttribute("max")}`;
+      }
+      const displayElement = el.querySelectorAll(".values")[0];
+      displayElement.innerHTML = `$${slides[0].value}   ⟷   $${slides[1].value}`;
+    });
+  }
+
+  show();
 }

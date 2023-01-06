@@ -18,12 +18,18 @@ export function resetFilters() {
     displayElement.innerHTML = `$${slides[0].value}   ⟷   $${slides[1].value}`;
   });
 
-  for (const prop in chooseParamsObj) {
-    chooseParamsObj[prop] = [];
-  }
+  // for (const key in chooseParamsObj) {
+  //   chooseParamsObj[key] = [];
+  // }
+  chooseParamsObj.category = [];
+  chooseParamsObj.brand = [];
+  chooseParamsObj.price = [];
+  chooseParamsObj.stock = [];
 
   const productItems = document.querySelectorAll(".block-element");
   productItems.forEach((el) => {
     el.classList.remove("hide");
   });
+
+  window.location.search = "";
 }
