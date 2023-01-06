@@ -1,0 +1,80 @@
+import { IProducts } from "../item/item";
+import { openElement } from "../item/openItem";
+
+export function basketElements(Element: IProducts, index: number) {
+  const cartBlock = document.createElement("div");
+  const cartItem = document.createElement("div");
+  const itemNumber = document.createElement("div");
+  const itemInfo = document.createElement("div");
+  const itemImg = document.createElement("img");
+  const itemDetail = document.createElement("div");
+  const productTitle = document.createElement("div");
+  const productTitleText = document.createElement("h3");
+  const productDescriptions = document.createElement("div");
+  const productOther = document.createElement("div");
+  const productRating = document.createElement("div");
+  const productDiscount = document.createElement("div");
+  const numberControl = document.createElement("div");
+  const stockControl = document.createElement("div");
+  const incDecControl = document.createElement("div");
+  const buttonPlusControl = document.createElement("div");
+  const buttonMinusControl = document.createElement("div");
+  const quantityControl = document.createElement("h4");
+  const amountControl = document.createElement("div");
+
+  cartBlock.appendChild(cartItem);
+  cartItem.appendChild(itemNumber);
+  cartItem.appendChild(itemInfo);
+  itemInfo.appendChild(itemImg);
+  itemInfo.appendChild(itemDetail);
+  itemDetail.appendChild(productTitle);
+  productTitle.appendChild(productTitleText);
+  itemDetail.appendChild(productDescriptions);
+  itemDetail.appendChild(productOther);
+  productOther.appendChild(productRating);
+  productOther.appendChild(productDiscount);
+  cartItem.appendChild(numberControl);
+  numberControl.appendChild(stockControl);
+  numberControl.appendChild(incDecControl);
+  incDecControl.appendChild(buttonPlusControl);
+  incDecControl.appendChild(quantityControl);
+  incDecControl.appendChild(buttonMinusControl);
+  numberControl.appendChild(amountControl);
+
+  cartBlock.classList.add("cart-block");
+  cartItem.classList.add("cart-item");
+  itemNumber.classList.add("item-number");
+  itemInfo.classList.add("item-info");
+  itemImg.classList.add("item-img");
+  itemDetail.classList.add("item-detail");
+  productTitle.classList.add("product-title");
+  productDescriptions.classList.add("product-descriptions");
+  productOther.classList.add("product-other");
+  numberControl.classList.add("number-control");
+  stockControl.classList.add("stock-control");
+  incDecControl.classList.add("inc-dec-control");
+  buttonPlusControl.classList.add("button-plus-control");
+  buttonMinusControl.classList.add("button-minus-control");
+  amountControl.classList.add("amount-control");
+
+  itemNumber.innerHTML = `${index}`;
+  itemImg.src = `${Element.thumbnail}`;
+  productTitleText.innerText = `${Element.title}`;
+  productDescriptions.innerHTML = `${Element.description}`;
+  productRating.innerHTML = `Rating: ${Element.rating}`;
+  productDiscount.innerHTML = `Discount: ${Element.discountPercentage}%`;
+  stockControl.innerText = `Stock: ${Element.stock}`;
+  amountControl.innerText = `€${Element.stock}`;
+  buttonPlusControl.innerHTML = `+`;
+  buttonMinusControl.innerHTML = `-`;
+
+  itemInfo.addEventListener("click", () => {
+    openElement(Element);
+  });
+
+  // number of elements
+  const quantity = 1;
+  quantityControl.innerText = `${quantity}`;
+
+  return cartBlock;
+}
