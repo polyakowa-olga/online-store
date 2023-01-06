@@ -57,6 +57,7 @@ export function component(Element: IProducts) {
   productItem.append(buttonsElement);
   buttonsElement.append(buttonAddCard);
   buttonsElement.append(buttondetailsCard);
+
   itemText.append(nameElement);
   itemText.append(infoElement);
 
@@ -90,7 +91,7 @@ export function component(Element: IProducts) {
   ratingElementSpan.classList.add("infoes-element");
   stockElementSpan.classList.add("infoes-element");
 
-  blockElement.setAttribute("id", `${id}`); // olga
+  buttondetailsCard.setAttribute("id", `${id}`);
   nameElement.innerText = name;
   imgElement.src = path;
   categoryElementSpan.innerText = category;
@@ -117,7 +118,7 @@ export function component(Element: IProducts) {
   buttonAddCard.innerText = "ADD TO CART";
   buttondetailsCard.innerText = "DETAILS";
   buttondetailsCard.classList.add("open");
-  buttondetailsCard.href = `#${PageId.ItemPage}`; // olga
+  buttondetailsCard.href = `#${PageId.ItemPage}/${id}`; // olga
 
   buttondetailsCard.addEventListener("click", () => {
     openElement(Element);
@@ -125,3 +126,4 @@ export function component(Element: IProducts) {
 
   return blockElement;
 }
+export { openElement };
