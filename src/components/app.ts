@@ -2,8 +2,9 @@ import data from ".././assets/data.json";
 import { createFilterSection } from ".././components/filter/index";
 import { showProducts } from ".././components/main/products";
 import { showError } from "./error/error";
-import { showCart } from "./cart/cart";
+// import { showCart } from "./cart/cart";
 import { openElement } from ".././components/item/item";
+import { createBasket } from "../components/basket/basket";
 
 export const enum PageId {
   MainPage = "main-page",
@@ -37,7 +38,7 @@ export function renderNewPage(idPage: string, i?: number) {
     } else if (idPage === PageId.CartPage) {
       mainSection.innerHTML = "";
       mainSection.setAttribute("id", `${idPage} `);
-      mainSection.append(showCart());
+      mainSection.append(createBasket());
     } else {
       mainSection.innerHTML = "";
       mainSection.setAttribute("id", "error-page");

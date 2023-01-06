@@ -5,10 +5,10 @@ import rs_school_js from "./assets/images/rs_school_js.svg";
 import cart from "./assets/images/cart.png";
 import logo from "./assets/images/novogodnjaja-jolka.png";
 
-import { renderHeader } from "./components/header"
+import { renderHeader } from "./components/header";
 renderHeader();
 
-import { renderNewPage } from "./components/app"
+import { renderNewPage } from "./components/app";
 const container = document.querySelector(".container");
 const mainSection = document.createElement("main");
 mainSection.classList.add("main");
@@ -21,6 +21,3 @@ knowHashchange();
 
 import { renderFooter } from "./components/footer";
 renderFooter();
-
-
-
