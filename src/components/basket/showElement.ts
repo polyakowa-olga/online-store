@@ -1,11 +1,14 @@
 import { IProducts } from "../item/item";
 import { openElement } from "../item/openItem";
+import { PageId } from ".././app"; // olga
 
 export function basketElements(Element: IProducts, index: number) {
   const cartBlock = document.createElement("div");
   const cartItem = document.createElement("div");
   const itemNumber = document.createElement("div");
   const itemInfo = document.createElement("div");
+  const itemInfoA = document.createElement("a");
+
   const itemImg = document.createElement("img");
   const itemDetail = document.createElement("div");
   const productTitle = document.createElement("div");
@@ -25,8 +28,9 @@ export function basketElements(Element: IProducts, index: number) {
   cartBlock.appendChild(cartItem);
   cartItem.appendChild(itemNumber);
   cartItem.appendChild(itemInfo);
-  itemInfo.appendChild(itemImg);
-  itemInfo.appendChild(itemDetail);
+  itemInfo.appendChild(itemInfoA);
+  itemInfoA.appendChild(itemImg);
+  itemInfoA.appendChild(itemDetail);
   itemDetail.appendChild(productTitle);
   productTitle.appendChild(productTitleText);
   itemDetail.appendChild(productDescriptions);
@@ -44,7 +48,7 @@ export function basketElements(Element: IProducts, index: number) {
   cartBlock.classList.add("cart-block");
   cartItem.classList.add("cart-item");
   itemNumber.classList.add("item-number");
-  itemInfo.classList.add("item-info");
+  itemInfoA.classList.add("item-info");
   itemImg.classList.add("item-img");
   itemDetail.classList.add("item-detail");
   productTitle.classList.add("product-title");
@@ -67,6 +71,7 @@ export function basketElements(Element: IProducts, index: number) {
   amountControl.innerText = `€${Element.stock}`;
   buttonPlusControl.innerHTML = `+`;
   buttonMinusControl.innerHTML = `-`;
+  itemInfoA.href = `#${PageId.ItemPage}/${Element.id}`;
 
   itemInfo.addEventListener("click", () => {
     openElement(Element);
