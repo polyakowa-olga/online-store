@@ -3,7 +3,7 @@ import { createFilterSection } from ".././components/filter/index";
 import { showProducts } from ".././components/main/products";
 import { showError } from "./error/error";
 import { showCart } from "./cart/cart";
-import { component } from ".././components/item/item"
+import { component } from ".././components/item/item";
 
 export const enum PageId {
   MainPage = "main-page",
@@ -32,7 +32,7 @@ export function renderNewPage(idPage: string) {
     } else if (idPage === PageId.ItemPage) {
       mainSection.innerHTML = "";
       mainSection.setAttribute("id", `${idPage}`);
-      component(); // сюда нужно передать объект для отрисовки
+      component(data.products[0]); // сюда нужно передать объект для отрисовки
     } else if (idPage === PageId.CartPage) {
       mainSection.innerHTML = "";
       mainSection.setAttribute("id", `${idPage}`);

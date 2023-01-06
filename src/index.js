@@ -14,6 +14,7 @@ const mainSection = document.createElement("main");
 mainSection.classList.add("main");
 container?.append(mainSection);
 renderNewPage("main-page");
+window.location.hash = "main-page";
 
 import { knowHashchange } from "./components/app";
 knowHashchange();
