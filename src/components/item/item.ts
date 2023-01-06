@@ -15,6 +15,7 @@ export interface IProducts {
 }
 
 export function component(Element: IProducts) {
+  const id = Element.id;
   const name = Element.title;
   const path = Element.thumbnail;
   const brand = Element.brand;
@@ -87,6 +88,7 @@ export function component(Element: IProducts) {
   ratingElementSpan.classList.add("infoes-element");
   stockElementSpan.classList.add("infoes-element");
 
+  blockElement.setAttribute("id", `${id}`); // olga
   nameElement.innerText = name;
   imgElement.src = path;
   categoryElementSpan.innerText = category;

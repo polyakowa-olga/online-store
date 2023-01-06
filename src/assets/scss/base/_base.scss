@@ -23,3 +23,7 @@ body {
 
     @include flex-between ($direction: column);
 }
+
+.block-element.hide {
+    display: none;
+}
