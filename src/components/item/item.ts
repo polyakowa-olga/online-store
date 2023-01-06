@@ -126,3 +126,4 @@ export function component(Element: IProducts) {
 
   return blockElement;
 }
+export { openElement };

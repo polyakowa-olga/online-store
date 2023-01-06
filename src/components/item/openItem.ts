@@ -1,13 +1,13 @@
 import { IProducts } from "./item";
 
 export function openElement(element: IProducts) {
-  const main = document.querySelector(".main") as HTMLDivElement;
-  const filter = document.getElementById("filter_container") as HTMLDivElement;
-  const products = document.getElementById(
-    "products_container"
-  ) as HTMLDivElement;
-  main.removeChild(filter);
-  main.removeChild(products);
+  // const main = document.querySelector(".main") as HTMLDivElement;
+  // const filter = document.getElementById("filter_container") as HTMLDivElement;
+  // const products = document.getElementById(
+  //   "products_container"
+  // ) as HTMLDivElement;
+  // main.removeChild(filter);
+  // main.removeChild(products);
   const detailsBlock = document.createElement("div");
   const linkNavigation = document.createElement("div");
   const productDetail = document.createElement("div");
@@ -32,7 +32,7 @@ export function openElement(element: IProducts) {
   const cartButtonAdd = document.createElement("button");
   const cartButtonBuy = document.createElement("button");
 
-  main.appendChild(detailsBlock);
+  // main.appendChild(detailsBlock);
   detailsBlock.appendChild(linkNavigation);
   detailsBlock.appendChild(productDetail);
   linkNavigation.appendChild(linkStore);
@@ -121,4 +121,5 @@ export function openElement(element: IProducts) {
   linkBrand.innerText = `${element.brand}`;
   linkTitle.innerText = `${element.title}`;
   console.log(element);
+  return detailsBlock;
 }
