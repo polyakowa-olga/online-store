@@ -3,6 +3,7 @@ import { showFilterItems } from "./showFilterItems";
 import { resetFilters } from "./reset-button";
 import { toggleFilters } from "./copy-button";
 import { getDataFromQueryString } from "../queryString";
+import { showNumberItems } from "../sort/showNumberItems";
 
 export function controllChanges() {
   const paramBox = document.querySelector(".filter-params");
@@ -23,4 +24,5 @@ export function controllChanges() {
   window.onload = checkValues;
 
   window.addEventListener("load", getDataFromQueryString);
+  window.addEventListener("load", showNumberItems);
 }
