@@ -1,8 +1,7 @@
 import { checkValues } from "./dualSlider";
 import { showFilterItems } from "./showFilterItems";
 import { resetFilters } from "./reset-button";
-import { saveParamsObj } from "./chooseParamsObj";
-import { getParamsObj } from "./chooseParamsObj";
+import { getDataFromQueryString } from "../queryString";
 
 export function controllChanges() {
   const paramBox = document.querySelector(".filter-params");
@@ -18,6 +17,5 @@ export function controllChanges() {
 
   window.onload = checkValues;
 
-  window.addEventListener("load", getParamsObj);
-  window.addEventListener("beforeunload", saveParamsObj);
+  window.addEventListener("load", getDataFromQueryString);
 }

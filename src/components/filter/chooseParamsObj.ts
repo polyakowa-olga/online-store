@@ -81,13 +81,7 @@ export function sort() {
   return res;
 }
 
-export function saveParamsObj() {
-  localStorage.setItem("ParamsObj", JSON.stringify(chooseParamsObj));
-}
-
 export function getParamsObj() {
-  if (localStorage.getItem("ParamsObj")) {
-    chooseParamsObj = JSON.parse(localStorage.getItem("ParamsObj"));
 
     const list = document.querySelectorAll(".input-box");
     list.forEach((el) => {
@@ -124,7 +118,7 @@ export function getParamsObj() {
       const displayElement = el.querySelectorAll(".values")[0];
       displayElement.innerHTML = `$${slides[0].value}   ⟷   $${slides[1].value}`;
     });
-  }
+ // }
 
   show();
 }

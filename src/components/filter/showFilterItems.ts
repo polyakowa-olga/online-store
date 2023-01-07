@@ -1,7 +1,7 @@
 import { getInputValue } from "./checkboxController";
 import { chooseParamsObj } from "./chooseParamsObj";
 import { sort } from "./chooseParamsObj";
-import { createQueryString } from "../createQueryString";
+import { updateQueryString } from "../queryString";
 // import { updateParamsObj } from "../createQueryString";
 
 export function showFilterItems(event: Event) {
@@ -30,7 +30,7 @@ export function showFilterItems(event: Event) {
   show();
 
   // updateParamsObj();
-  createQueryString(chooseParamsObj);
+  updateQueryString(chooseParamsObj);
 }
 
 export function show() {
