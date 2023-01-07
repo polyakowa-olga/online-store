@@ -19,5 +19,5 @@ export function controllChanges() {
   window.onload = checkValues;
 
   window.addEventListener("load", getParamsObj);
-  window.addEventListener("beforeunload", saveParamsObj)
+  window.addEventListener("beforeunload", saveParamsObj);
 }

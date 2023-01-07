@@ -94,14 +94,14 @@ export function getParamsObj() {
       if (el.closest("#fl-category")) {
         if (chooseParamsObj.category.includes(el.childNodes[1].textContent)) {
           el.childNodes.forEach((element) => {
-            element.classList.add("active");
+            (<Element>element).classList.add("active");
           });
         }
       }
       if (el.closest("#fl-brand")) {
         if (chooseParamsObj.brand.includes(el.childNodes[1].textContent)) {
           el.childNodes.forEach((element) => {
-            element.classList.add("active");
+            (<Element>element).classList.add("active");
           });
         }
       }

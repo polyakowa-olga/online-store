@@ -3,11 +3,12 @@ import "./main.scss";
 import github_icon_128848 from "./assets/images/github_icon_128848.svg";
 import rs_school_js from "./assets/images/rs_school_js.svg";
 import cart from "./assets/images/cart.png";
-import logo from "./assets/images/novogodnjaja-jolka.png";
+import logo from "./assets/images/Shopping-Bag-PNG-Pic.png";
 
 import { renderHeader } from "./components/header";
+import { showDataInHeader } from "./components/basket/showDataInHeader";
 renderHeader();
-
+showDataInHeader();
 import { renderNewPage } from "./components/app";
 const container = document.querySelector(".container");
 const mainSection = document.createElement("main");
