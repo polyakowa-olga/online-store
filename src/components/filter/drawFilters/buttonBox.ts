@@ -12,6 +12,11 @@ function drawBtnBox() {
   btnCopy.classList.add("filter-btn");
   btnCopy.classList.add("copy");
   btnCopy.textContent = "Copy Link";
+  const url = new URL(window.location.href);
+  if (url.searchParams.has("copy_link")) {
+    btnCopy.classList.add("save");
+    btnCopy.textContent = "Return Filters";
+  }
   btnBox.append(btnCopy);
 
   return btnBox;

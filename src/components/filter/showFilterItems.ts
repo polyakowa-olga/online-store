@@ -26,7 +26,7 @@ export function showFilterItems(event: Event) {
       }
     }
   }
-  console.log(chooseParamsObj);
+
   show();
 
   // updateParamsObj();
@@ -35,9 +35,6 @@ export function showFilterItems(event: Event) {
 
 export function show() {
   const params: string[] = sort();
-
-  console.log(params);
-
   const productItems = document.querySelectorAll(".block-element");
 
   if (params.length) {

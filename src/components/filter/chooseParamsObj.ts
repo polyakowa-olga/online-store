@@ -7,6 +7,7 @@ export interface IChooseParams {
   brand: string[];
   price: number[];
   stock: number[];
+  copy_link?: string;
 }
 
 export const chooseParamsObj: IChooseParams = {
@@ -78,9 +79,6 @@ export function sort() {
         el.price >= chooseParamsObj.price[0]
       ) {
         resultPrice.push(el);
-        console.log(el.price);
-        console.log(chooseParamsObj.price[1]);
-        console.log(chooseParamsObj.price[0]);
       }
     });
     result = resultPrice.slice();
@@ -95,9 +93,6 @@ export function sort() {
         el.stock >= chooseParamsObj.stock[0]
       ) {
         resultStock.push(el);
-        console.log(el.stock);
-        console.log(chooseParamsObj.stock[1]);
-        console.log(chooseParamsObj.stock[0]);
       }
     });
     result = resultStock.slice();
@@ -114,14 +109,14 @@ export function getParamsObj() {
   const list = document.querySelectorAll(".input-box");
   list.forEach((el) => {
     if (el.closest("#fl-category")) {
-      if (chooseParamsObj.category.includes(el.childNodes[1].textContent)) {
+      if (chooseParamsObj.category.includes(el.childNodes[1].textContent!)) {
         el.childNodes.forEach((element) => {
           (<Element>element).classList.add("active");
         });
       }
     }
     if (el.closest("#fl-brand")) {
-      if (chooseParamsObj.brand.includes(el.childNodes[1].textContent)) {
+      if (chooseParamsObj.brand.includes(el.childNodes[1].textContent!)) {
         el.childNodes.forEach((element) => {
           (<Element>element).classList.add("active");
         });

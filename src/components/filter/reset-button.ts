@@ -18,11 +18,8 @@ export function resetFilters() {
     displayElement.innerHTML = `$${slides[0].value}   ⟷   $${slides[1].value}`;
   });
 
-  // for (const key in chooseParamsObj) {
-  //   chooseParamsObj[key] = [];
-  // }
-  chooseParamsObj.category = [];
   chooseParamsObj.brand = [];
+  chooseParamsObj.category = [];
   chooseParamsObj.price = [];
   chooseParamsObj.stock = [];
 

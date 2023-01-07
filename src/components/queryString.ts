@@ -18,13 +18,16 @@ export function updateQueryString(obj: IChooseParams) {
   }
   if (obj.price.length) {
     if (!str) str += `price=${obj.price[0]}to${obj.price[1]}`;
-    if (str) str += `&price=${obj.price[0]}to${obj.price[1]}`;
+    else if (str) str += `&price=${obj.price[0]}to${obj.price[1]}`;
   }
   if (obj.stock.length) {
     if (!str) str += `stock=${obj.stock[0]}to${obj.stock[1]}`;
-    if (str) str += `&stock=${obj.stock[0]}to${obj.stock[1]}`;
+    else if (str) str += `&stock=${obj.stock[0]}to${obj.stock[1]}`;
   }
-
+  if (obj.copy_link) {
+    if (!str) str += `copy_link=${obj.copy_link}`;
+    else if (str) str += `&copy_link=${obj.copy_link}`;
+  }
   document.location.search = str;
 }
 
@@ -36,21 +39,29 @@ export function getDataFromQueryString() {
     const key: string = arrProp[0];
     const value: string = arrProp[1];
     for (const prop in chooseParamsObj) {
-      if (key === prop && (key === "category" || key === "brand")) {
-        if (
-          !chooseParamsObj[prop as keyof typeof chooseParamsObj].includes(value)
-        ) {
-          chooseParamsObj[prop as keyof typeof chooseParamsObj].push(value);
+      if (key === prop && key === "category") {
+        if (!chooseParamsObj.category.includes(value)) {
+          chooseParamsObj.category.push(value);
         }
       }
-      if (key === prop && (key === "price" || key === "stock")) {
+      if (key === prop && key === "brand") {
+        if (!chooseParamsObj.brand.includes(value)) {
+          chooseParamsObj.brand.push(value);
+        }
+      }
+      if (key === prop && key === "price") {
         const range = arrProp[1].split("to");
-        chooseParamsObj[prop as keyof typeof chooseParamsObj].push(
-          range[0],
-          range[1]
-        );
+        chooseParamsObj.price.push(+range[0], +range[1]);
+      }
+      if (key === prop && key === "stock") {
+        const range = arrProp[1].split("to");
+        chooseParamsObj.stock.push(+range[0], +range[1]);
+      }
+      if (key === "copy_link") {
+        chooseParamsObj.copy_link = arrProp[1];
       }
     }
   }
+  console.log();
   getParamsObj();
 }
