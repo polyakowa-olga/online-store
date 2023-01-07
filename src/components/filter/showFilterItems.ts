@@ -46,6 +46,21 @@ export function show() {
         el.classList.remove("hide");
       }
     });
+  } else if (
+    chooseParamsObj.category.length ||
+    chooseParamsObj.brand.length ||
+    chooseParamsObj.price.length ||
+    chooseParamsObj.stock.length
+  ) {
+    productItems.forEach((el) => {
+      el.classList.add("hide");
+      const mainBox = document.querySelector(".products-container");
+      if (mainBox) {
+        mainBox.textContent = "NOT FOUND";
+        mainBox.style.fontSize = "64px";
+        mainBox.style.color = "red";
+      }
+    });
   } else {
     productItems.forEach((el) => {
       el.classList.remove("hide");
