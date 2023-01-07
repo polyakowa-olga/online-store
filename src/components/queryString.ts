@@ -33,17 +33,22 @@ export function getDataFromQueryString() {
 
   for (let i = 0; i < arr.length; i++) {
     const arrProp = arr[i].split("=");
-    const key:string = arrProp[0];
-    const value:string = arrProp[1];
+    const key: string = arrProp[0];
+    const value: string = arrProp[1];
     for (const prop in chooseParamsObj) {
       if (key === prop && (key === "category" || key === "brand")) {
-        if (!chooseParamsObj[prop as keyof typeof chooseParamsObj].includes(value)) {
+        if (
+          !chooseParamsObj[prop as keyof typeof chooseParamsObj].includes(value)
+        ) {
           chooseParamsObj[prop as keyof typeof chooseParamsObj].push(value);
         }
       }
       if (key === prop && (key === "price" || key === "stock")) {
         const range = arrProp[1].split("to");
-        chooseParamsObj[prop as keyof typeof chooseParamsObj].push(range[0], range[1]);
+        chooseParamsObj[prop as keyof typeof chooseParamsObj].push(
+          range[0],
+          range[1]
+        );
       }
     }
   }
