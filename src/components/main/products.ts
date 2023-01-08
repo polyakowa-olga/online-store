@@ -57,6 +57,7 @@ export function showProducts() {
   viewProductsSmall.classList.add("view-products-small");
   viewProductsBig.classList.add("view-products-big");
   sortBarSelect.classList.add("sort-bar-select");
+  amountProdunctsSpan.classList.add("amount-products"); // olga
 
   amountProdunctsSpan.innerText = `${data.products.length}`;
   amountProduncts.innerHTML = amountProduncts.innerText =

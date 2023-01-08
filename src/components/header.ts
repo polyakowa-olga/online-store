@@ -3,11 +3,12 @@ import { PageId } from "./app";
 function renderLogo() {
   const logoBox = document.createElement("a");
   logoBox.classList.add("header__logo");
+  logoBox.classList.add("link");
   logoBox.href = `#${PageId.MainPage}`;
 
   const logoImg = document.createElement("img");
   logoImg.classList.add("logo__img");
-  logoImg.src = "./images/novogodnjaja-jolka.png";
+  logoImg.src = "./images/Shopping-Bag-PNG-Pic.png";
   logoImg.setAttribute("alt", "logo-img");
   logoImg.setAttribute("width", "100");
   logoBox.append(logoImg);
@@ -30,6 +31,7 @@ function renderSumBox() {
 function renderCart() {
   const cartBox = document.createElement("a");
   cartBox.classList.add("header__basket");
+  cartBox.classList.add("link");
   cartBox.href = `#${PageId.CartPage}`;
 
   const cartImg = document.createElement("img");

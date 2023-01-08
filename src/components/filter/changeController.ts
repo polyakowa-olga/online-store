@@ -1,6 +1,9 @@
 import { checkValues } from "./dualSlider";
 import { showFilterItems } from "./showFilterItems";
 import { resetFilters } from "./reset-button";
+import { toggleFilters } from "./copy-button";
+import { getDataFromQueryString } from "../queryString";
+import { showNumberItems } from "../sort/showNumberItems";
 
 export function controllChanges() {
   const paramBox = document.querySelector(".filter-params");
@@ -9,11 +12,17 @@ export function controllChanges() {
 
   paramBox.addEventListener("click", showFilterItems);
 
-  const reset = document.querySelector(".reset");
-  if (!reset)
+  const resetBTN = document.querySelector(".reset");
+  if (!resetBTN)
     throw new Error('Error! Element with class "reset" not found!');
+  resetBTN.addEventListener("click", resetFilters);
 
-  reset.addEventListener("click", resetFilters);
+  const copyBTN = document.querySelector(".copy");
+  if (!copyBTN) throw new Error('Error! Element with class "copy" not found!');
+  copyBTN.addEventListener("click", toggleFilters);
 
   window.onload = checkValues;
+
+  window.addEventListener("load", getDataFromQueryString);
+  window.addEventListener("load", showNumberItems);
 }

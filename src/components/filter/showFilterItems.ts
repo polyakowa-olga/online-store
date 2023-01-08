@@ -1,6 +1,8 @@
 import { getInputValue } from "./checkboxController";
 import { chooseParamsObj } from "./chooseParamsObj";
 import { sort } from "./chooseParamsObj";
+import { updateQueryString } from "../queryString";
+// import { updateParamsObj } from "../createQueryString";
 
 export function showFilterItems(event: Event) {
   const ev = event.target as HTMLElement;
@@ -24,12 +26,15 @@ export function showFilterItems(event: Event) {
       }
     }
   }
-  console.log(chooseParamsObj);
 
+  show();
+
+  // updateParamsObj();
+  updateQueryString(chooseParamsObj);
+}
+
+export function show() {
   const params: string[] = sort();
-
-  console.log(params);
-
   const productItems = document.querySelectorAll(".block-element");
 
   if (params.length) {
@@ -39,6 +44,21 @@ export function showFilterItems(event: Event) {
 
       if (params.includes(id)) {
         el.classList.remove("hide");
+      }
+    });
+  } else if (
+    chooseParamsObj.category.length ||
+    chooseParamsObj.brand.length ||
+    chooseParamsObj.price.length ||
+    chooseParamsObj.stock.length
+  ) {
+    productItems.forEach((el) => {
+      el.classList.add("hide");
+      const mainBox = document.querySelector(".products-container");
+      if (mainBox) {
+        mainBox.textContent = "NOT FOUND";
+        mainBox.style.fontSize = "64px";
+        mainBox.style.color = "red";
       }
     });
   } else {

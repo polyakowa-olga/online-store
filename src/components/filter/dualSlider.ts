@@ -30,11 +30,13 @@ export function getValues(this: ParentNode) {
     if (displayElement.closest("#fl-price")) {
       displayElement.innerHTML = `$${slide1}   ⟷   $${slide2}`;
       chooseParamsObj.price = [];
-      chooseParamsObj.price.push(slide1, slide2);
+      if (slide1 === 10 && slide2 === 1749) chooseParamsObj.price = [];
+      else chooseParamsObj.price.push(slide1, slide2);
     } else {
       displayElement.innerHTML = `${slide1}   ⟷   ${slide2}`;
       chooseParamsObj.stock = [];
-      chooseParamsObj.stock.push(slide1, slide2);
+      if (slide1 === 2 && slide2 === 150) chooseParamsObj.stock = [];
+      else chooseParamsObj.stock.push(slide1, slide2);
     }
   }
 }
