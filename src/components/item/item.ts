@@ -1,5 +1,9 @@
 import { openElement } from "../item/openItem";
 import { PageId } from ".././app"; // olga
+import { addProduct } from "../basket/addproduct";
+import { deleteProduct } from "../basket/addproduct";
+import { basket } from "../basket/basket";
+import { showDataInHeader } from "../basket/showDataInHeader";
 
 export interface IProducts {
   id: number;
@@ -116,6 +120,7 @@ export function component(Element: IProducts) {
     `Stock: ` + stockElementSpan.outerHTML;
 
   buttonAddCard.innerText = "ADD TO CART";
+  buttonAddCard.classList.add("add-cart");
   buttondetailsCard.innerText = "DETAILS";
   buttondetailsCard.classList.add("open");
   buttondetailsCard.href = `#${PageId.ItemPage}/${id}`; // olga
@@ -123,7 +128,33 @@ export function component(Element: IProducts) {
   buttondetailsCard.addEventListener("click", () => {
     openElement(Element);
   });
+  buttonAddCard.addEventListener("click", () => {
+    if (buttonAddCard.classList.contains("drop-from-cart")) {
+      buttonAddCard.classList.remove("drop-from-cart");
+      buttonAddCard.classList.add("add-cart");
+      buttonAddCard.innerText = "ADD TO CART";
+      deleteProduct(Element);
+    } else {
+      addProduct(Element);
+      buttonAddCard.classList.remove("add-cart");
+      buttonAddCard.classList.add("drop-from-cart");
+      buttonAddCard.innerText = "DROP FROM CART";
+    }
+    for (let i = 0; i < basket.length; i++) {
+      if (basket[i].title === Element.title) {
+        buttonAddCard.classList.add("drop-from-cart");
+        buttonAddCard.innerText = "DROP FROM CART";
+      }
+    }
+    showDataInHeader();
+  });
 
+  for (let i = 0; i < basket.length; i++) {
+    if (basket[i].title === Element.title) {
+      buttonAddCard.innerText = "DROP FROM CART";
+      buttonAddCard.classList.add("drop-from-cart");
+    }
+  }
   return blockElement;
 }
 export { openElement };
