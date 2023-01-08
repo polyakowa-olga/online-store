@@ -1,6 +1,8 @@
 import { IProducts } from "../item/item";
 import { openElement } from "../item/openItem";
 import { PageId } from ".././app"; // olga
+import { basket } from "./basket";
+import { summerPrices } from "./basket";
 
 export function basketElements(Element: IProducts, index: number) {
   const cartBlock = document.createElement("div");
@@ -68,7 +70,7 @@ export function basketElements(Element: IProducts, index: number) {
   productRating.innerHTML = `Rating: ${Element.rating}`;
   productDiscount.innerHTML = `Discount: ${Element.discountPercentage}%`;
   stockControl.innerText = `Stock: ${Element.stock}`;
-  amountControl.innerText = `€${Element.stock}`;
+  amountControl.innerText = `€${Element.price}`;
   buttonPlusControl.innerHTML = `+`;
   buttonMinusControl.innerHTML = `-`;
   itemInfoA.href = `#${PageId.ItemPage}/${Element.id}`;
@@ -78,8 +80,71 @@ export function basketElements(Element: IProducts, index: number) {
   });
 
   // number of elements
-  const quantity = 1;
-  quantityControl.innerText = `${quantity}`;
 
+  let numberOfProduct = 1;
+  quantityControl.innerText = `${numberOfProduct}`;
+  let numberOfProducts = basket.length;
+  let PriceOfProducts = summerPrices();
+
+  buttonPlusControl.addEventListener("click", () => {
+    const showNumberProducts = document.getElementById(
+      "total_Elements_Span"
+    ) as HTMLSpanElement;
+    numberOfProducts = Number(showNumberProducts.textContent);
+
+    const showPriceProducts = document.getElementById(
+      "total_Prices_Span"
+    ) as HTMLSpanElement;
+    PriceOfProducts = Number(showPriceProducts.textContent);
+
+    if (numberOfProduct === Element.stock) {
+      numberOfProduct = Element.stock;
+    } else {
+      numberOfProduct += 1;
+      numberOfProducts += 1;
+      // basket.push(Element);
+      PriceOfProducts += Element.price;
+    }
+    quantityControl.innerText = `${numberOfProduct}`;
+    showNumberProducts.innerHTML = `${numberOfProducts}`;
+    showPriceProducts.innerText = `${PriceOfProducts}`;
+  });
+
+  buttonMinusControl.addEventListener("click", () => {
+    const showNumberProducts = document.getElementById(
+      "total_Elements_Span"
+    ) as HTMLSpanElement;
+    numberOfProducts = Number(showNumberProducts.textContent);
+
+    const showPriceProducts = document.getElementById(
+      "total_Prices_Span"
+    ) as HTMLSpanElement;
+    PriceOfProducts = Number(showPriceProducts.textContent);
+
+    if (numberOfProduct < 2) {
+      for (let i = 0; i < basket.length; i++) {
+        if (basket[i] === Element) {
+          basket.splice(i, 1);
+          numberOfProducts = basket.length;
+          PriceOfProducts -= Element.price;
+          const cartBlockDelete = cartBlock.parentNode as HTMLDivElement;
+          cartBlockDelete.removeChild(cartBlock);
+        }
+      }
+      showNumberProducts.innerHTML = `${numberOfProducts}`;
+      showPriceProducts.innerText = `${PriceOfProducts}`;
+
+      return;
+    } else {
+      numberOfProduct -= 1;
+      numberOfProducts -= 1;
+      PriceOfProducts -= Element.price;
+      showNumberProducts.innerHTML = `${numberOfProducts}`;
+      showPriceProducts.innerText = `${PriceOfProducts}`;
+
+      // basket.pop(Element);
+    }
+    quantityControl.innerText = `${numberOfProduct}`;
+  });
   return cartBlock;
 }
