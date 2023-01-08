@@ -11,7 +11,7 @@ export function getCartSum() {
     basket.forEach((el) => {
       num += el.price;
     });
-    sumBox.textContent = `Cart total: $${num}`;
+    sumBox.textContent = `Cart total: €${num}`;
   }
 }
 

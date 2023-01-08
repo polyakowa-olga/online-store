@@ -56,6 +56,18 @@ export const basket = [
   },
 ];
 
+export const summerPrices = function () {
+  let sum = 0;
+  for (let i = 0; i < basket.length; i++) {
+    if (basket.length === 0) {
+      return sum;
+    } else {
+      sum += basket[i].price;
+    }
+  }
+  return sum;
+};
+
 export function createBasket() {
   // const main = document.querySelector(".main") as HTMLDivElement;
   // const filter = document.getElementById("filter_container") as HTMLDivElement;
@@ -64,6 +76,7 @@ export function createBasket() {
   // ) as HTMLDivElement;
   // main.removeChild(filter);
   // main.removeChild(products);
+  // const summerPrices: number = summerPrices(basket);
 
   const cartWrapper = document.createElement("div");
   const productsCart = document.createElement("div");
@@ -73,7 +86,12 @@ export function createBasket() {
   const totalCart = document.createElement("div");
   const totalCartText = document.createElement("h2");
   const totalElements = document.createElement("div");
+  const totalElementsP = document.createElement("p");
+  const totalElementsSpan = document.createElement("span");
+
   const totalPrices = document.createElement("div");
+  const totalPricesP = document.createElement("p");
+  const totalPricesSpan = document.createElement("span");
   const promoCode = document.createElement("div");
   const promoCodeInput = document.createElement("input");
   const promoText = document.createElement("span");
@@ -86,7 +104,11 @@ export function createBasket() {
   cartWrapper.appendChild(totalCart);
   totalCart.appendChild(totalCartText);
   totalCart.appendChild(totalElements);
+  totalElements.appendChild(totalElementsP);
+  totalElementsP.append(totalElementsSpan);
   totalCart.appendChild(totalPrices);
+  totalPrices.appendChild(totalPricesP);
+  totalPricesP.appendChild(totalPricesSpan);
   totalCart.appendChild(promoCode);
   promoCode.appendChild(promoCodeInput);
   totalCart.appendChild(promoText);
@@ -106,8 +128,14 @@ export function createBasket() {
 
   titlePageControleText.innerText = "Products In Cart";
   totalCartText.innerText = "Summary";
-  totalElements.innerHTML = "Products:";
-  totalPrices.innerHTML = "Total:";
+  totalElementsSpan.id = "total_Elements_Span";
+  totalElementsSpan.innerText = `${basket.length}`;
+  totalElementsP.innerHTML = totalElementsP.innerText =
+    `Products:` + totalElementsSpan.outerHTML;
+  totalPricesSpan.id = "total_Prices_Span";
+  totalPricesSpan.innerText = `${summerPrices()}`;
+  totalPricesP.innerHTML = totalPricesP.innerText =
+    `Total: €` + totalPricesSpan.outerHTML;
 
   promoCodeInput.setAttribute("type", "search");
   promoCodeInput.placeholder = "Enter promo code";
