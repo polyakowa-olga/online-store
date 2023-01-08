@@ -5,9 +5,10 @@ export function showNumberEachParam(params: IProducts[]) {
   const categories = params.map((el) => el.category);
   const brandes = params.map((el) => el.brand);
   list.forEach((el) => {
+    const textBefore = el.textContent;
+    el.textContent = `0${textBefore?.substring(1)}`;
     if (el.previousSibling?.childNodes[1]) {
       const labelInput = el.previousSibling?.childNodes[1].textContent;
-      console.log(el.previousSibling?.childNodes[1].textContent);
       if (categories.includes(labelInput as string)) {
         const textBefore = el.textContent;
         el.textContent = `${
