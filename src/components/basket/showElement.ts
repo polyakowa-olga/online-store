@@ -4,7 +4,11 @@ import { PageId } from ".././app"; // olga
 import { basket } from "./basket";
 import { summerPrices } from "./basket";
 
-export function basketElements(Element: IProducts, index: number) {
+export function basketElements(
+  Element: IProducts,
+  index: number,
+  addStock: number
+) {
   const cartBlock = document.createElement("div");
   const cartItem = document.createElement("div");
   const itemNumber = document.createElement("div");
@@ -80,8 +84,8 @@ export function basketElements(Element: IProducts, index: number) {
   });
 
   // number of elements
-
-  let numberOfProduct = 1;
+  let numberOfProduct = addStock || 1;
+  quantityControl.id = "quantity-control";
   quantityControl.innerText = `${numberOfProduct}`;
   let numberOfProducts = basket.length;
   let PriceOfProducts = summerPrices();

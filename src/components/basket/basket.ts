@@ -151,9 +151,11 @@ export function createBasket() {
   //   `Category: ` + categoryElementSpan.outerHTML;
 
   let index = 1;
+  const quantityControl = document.getElementById("quantity-control");
+  const addStock = Number(quantityControl?.textContent);
   for (let i = 0; i < basket.length; i++) {
     const Element = basket[i];
-    prodItems.appendChild(basketElements(Element, index));
+    prodItems.appendChild(basketElements(Element, index, addStock));
     index++;
   }
 
