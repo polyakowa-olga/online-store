@@ -29,8 +29,8 @@ export function showProducts() {
     "Sort by price DESC",
     "Sort by rating ASC",
     "Sort by rating DESC",
-    "Sort by discount ASC",
-    "Sort by discount DESC",
+    // "Sort by discount ASC",
+    // "Sort by discount DESC",
   ];
   for (let i = 0; i < sortArray.length; i++) {
     const option = document.createElement("option");

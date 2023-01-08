@@ -2,6 +2,8 @@ import { getInputValue } from "./checkboxController";
 import { chooseParamsObj } from "./chooseParamsObj";
 import { sort } from "./chooseParamsObj";
 import { updateQueryString } from "../queryString";
+import { sortFoundItems } from "../sort/sortFoundItems";
+import { IProducts } from "../item/item";
 
 export function showFilterItems(event: Event) {
   const ev = event.target as HTMLElement;
@@ -33,9 +35,12 @@ export function showFilterItems(event: Event) {
 }
 
 export function show() {
-  const params: string[] = sort();
+  const arr: IProducts[] = sort();
+  const params: string[] = [];
   const productItems = document.querySelectorAll(".block-element");
-
+  arr.forEach((el) => {
+    params.push(`${el.id}`);
+  });
   if (params.length) {
     productItems.forEach((el) => {
       el.classList.add("hide");
@@ -64,5 +69,9 @@ export function show() {
     productItems.forEach((el) => {
       el.classList.remove("hide");
     });
+  }
+
+  if (chooseParamsObj.sort) {
+    sortFoundItems(chooseParamsObj.sort, arr);
   }
 }
