@@ -1,5 +1,6 @@
 import { chooseParamsObj } from "./chooseParamsObj";
-
+import { showNumberEachParam } from "../filter/showNumberEachParam";
+import data = require("../../assets/data.json");
 export function resetFilters() {
   const list = document.querySelectorAll(".input-box");
   list.forEach((el) => {
@@ -22,11 +23,17 @@ export function resetFilters() {
   chooseParamsObj.category = [];
   chooseParamsObj.price = [];
   chooseParamsObj.stock = [];
+  if (chooseParamsObj.sort) delete chooseParamsObj.sort;
 
   const productItems = document.querySelectorAll(".block-element");
   productItems.forEach((el) => {
     el.classList.remove("hide");
   });
 
+  const amount = document.querySelectorAll(".items-amount");
+  amount.forEach((el) => {
+    const textBefore = el.textContent;
+    el.textContent = `${textBefore?.substring(2)}${textBefore?.substring(1)}`;
+  });
   window.location.search = "";
 }

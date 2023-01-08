@@ -72,6 +72,28 @@ export function show() {
   }
 
   if (chooseParamsObj.sort) {
+
+    const optionBox = document.querySelector(
+      ".sort-bar-select"
+    ) as HTMLSelectElement;
+    switch (chooseParamsObj.sort) {
+      case "priceASC":
+        optionBox.value = "Sort by price ASC";
+
+        break;
+      case "priceDESC":
+        optionBox.value = "Sort by price DESC";
+
+        break;
+      case "ratingASC":
+        optionBox.value = "Sort by rating ASC";
+
+        break;
+      case "ratingDESC":
+        optionBox.value = "Sort by rating DESC";
+
+        break;
+    }
     sortFoundItems(chooseParamsObj.sort, arr);
   }
 }

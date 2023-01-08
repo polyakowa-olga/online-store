@@ -30,25 +30,25 @@ export function sortFoundItems(method: string, arr: IProducts[]) {
 export function addMethodSortToParamsObj(event: Event) {
   const ev = event.target as HTMLSelectElement;
   const value = ev.value;
-  if (!value.startsWith("Sort by")) return;
   let metod = "";
+  if (!value.startsWith("Sort by")) return;
 
   switch (value) {
     case "Sort by price ASC":
       metod = "priceASC";
-
+      if (chooseParamsObj.sort === metod) return;
       break;
     case "Sort by price DESC":
       metod = "priceDESC";
-
+      if (chooseParamsObj.sort === metod) return;
       break;
     case "Sort by rating ASC":
       metod = "ratingASC";
-
+      if (chooseParamsObj.sort === metod) return;
       break;
     case "Sort by rating DESC":
       metod = "ratingDESC";
-
+      if (chooseParamsObj.sort === metod) return;
       break;
   }
 
