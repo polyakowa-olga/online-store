@@ -115,7 +115,7 @@ export function openElement(element: IProducts) {
   cartButtonBuy.innerHTML = "Buy NOW";
   cartPrice.innerHTML = `€${element.price}`;
   productTitleH1.innerText = `${element.title}`;
-  linkStore.href = "";
+  linkStore.href = "#main-page";
   linkStore.innerText = "Store";
   linkCategory.innerText = `${element.category}`;
   linkBrand.innerText = `${element.brand}`;
