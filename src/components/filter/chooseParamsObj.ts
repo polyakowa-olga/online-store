@@ -1,6 +1,7 @@
 import { IProducts } from "../item/item";
 import data = require("../../assets/data.json");
 import { show } from "./showFilterItems";
+import { showNumberEachParam } from "./showNumberEachParam";
 
 export interface IChooseParams {
   category: string[];
@@ -97,7 +98,7 @@ export function sort() {
     });
     result = resultStock.slice();
   }
-
+  showNumberEachParam(result);
   result.forEach((el) => {
     res.push(`${el.id}`);
   });

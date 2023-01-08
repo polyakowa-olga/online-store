@@ -2,7 +2,6 @@ import { getInputValue } from "./checkboxController";
 import { chooseParamsObj } from "./chooseParamsObj";
 import { sort } from "./chooseParamsObj";
 import { updateQueryString } from "../queryString";
-// import { updateParamsObj } from "../createQueryString";
 
 export function showFilterItems(event: Event) {
   const ev = event.target as HTMLElement;
@@ -57,8 +56,8 @@ export function show() {
       const mainBox = document.querySelector(".products-container");
       if (mainBox) {
         mainBox.textContent = "NOT FOUND";
-        mainBox.style.fontSize = "64px";
-        mainBox.style.color = "red";
+        (<HTMLElement>mainBox).style.fontSize = "64px";
+        (<HTMLElement>mainBox).style.color = "red";
       }
     });
   } else {
