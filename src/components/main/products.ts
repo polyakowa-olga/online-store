@@ -2,7 +2,6 @@ import data = require("../../assets/data.json");
 import { component } from "../item/item";
 // import { sort } from"./sort";
 
-console.log(data);
 export function showProducts() {
   const productscontainer = document.getElementById(
     "products_container"
