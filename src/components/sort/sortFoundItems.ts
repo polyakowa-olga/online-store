@@ -30,29 +30,33 @@ export function sortFoundItems(method: string, arr: IProducts[]) {
 export function addMethodSortToParamsObj(event: Event) {
   const ev = event.target as HTMLSelectElement;
   const value = ev.value;
+  if (!value.startsWith("Sort by") && !chooseParamsObj.sort) return;
   let metod = "";
-  if (!value.startsWith("Sort by")) return;
-
-  switch (value) {
-    case "Sort by price ASC":
-      metod = "priceASC";
-      if (chooseParamsObj.sort === metod) return;
-      break;
-    case "Sort by price DESC":
-      metod = "priceDESC";
-      if (chooseParamsObj.sort === metod) return;
-      break;
-    case "Sort by rating ASC":
-      metod = "ratingASC";
-      if (chooseParamsObj.sort === metod) return;
-      break;
-    case "Sort by rating DESC":
-      metod = "ratingDESC";
-      if (chooseParamsObj.sort === metod) return;
-      break;
-  }
-
-  chooseParamsObj.sort = metod;
+  if (chooseParamsObj.sort && value === "Sort options:")
+    delete chooseParamsObj.sort;
   console.log(chooseParamsObj);
+  if (value.startsWith("Sort by")) {
+    switch (value) {
+      case "Sort by price ASC":
+        metod = "priceASC";
+        if (chooseParamsObj.sort === metod) return;
+        break;
+      case "Sort by price DESC":
+        metod = "priceDESC";
+        if (chooseParamsObj.sort === metod) return;
+        break;
+      case "Sort by rating ASC":
+        metod = "ratingASC";
+        if (chooseParamsObj.sort === metod) return;
+        break;
+      case "Sort by rating DESC":
+        metod = "ratingDESC";
+        if (chooseParamsObj.sort === metod) return;
+        break;
+    }
+    chooseParamsObj.sort = metod;
+  }
+  console.log(chooseParamsObj);
+
   updateQueryString(chooseParamsObj);
 }
