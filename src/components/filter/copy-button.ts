@@ -18,7 +18,7 @@ export function copyFilters(ev: Element) {
   console.log(chooseParamsObj.copy_link);
   ev.classList.add("save");
   ev.textContent = "Return Filters";
-  updateQueryString(chooseParamsObj)
+  updateQueryString(chooseParamsObj);
 }
 
 export function returnFilters() {

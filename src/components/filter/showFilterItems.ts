@@ -72,7 +72,6 @@ export function show() {
   }
 
   if (chooseParamsObj.sort) {
-
     const optionBox = document.querySelector(
       ".sort-bar-select"
     ) as HTMLSelectElement;

@@ -1,6 +1,6 @@
 import { chooseParamsObj } from "./chooseParamsObj";
-import { showNumberEachParam } from "../filter/showNumberEachParam";
-import data = require("../../assets/data.json");
+// import { showNumberEachParam } from "../filter/showNumberEachParam";
+// import data = require("../../assets/data.json");
 export function resetFilters() {
   const list = document.querySelectorAll(".input-box");
   list.forEach((el) => {

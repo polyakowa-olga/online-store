@@ -5,7 +5,7 @@ import { toggleFilters } from "./copy-button";
 import { getDataFromQueryString } from "../queryString";
 import { showNumberItems } from "../sort/showNumberItems";
 import { addMethodSortToParamsObj } from ".././sort/sortFoundItems";
-import { toggleRepresentaionProducts } from ".././representationProducts.ts/toggleRepresentation";
+// import { toggleRepresentaionProducts } from ".././representationProducts.ts/toggleRepresentation";
 import { saveCart } from "../basket/saveCart";
 import { getCart } from "../basket/saveCart";
 
@@ -16,23 +16,20 @@ export function controllChanges() {
 
   paramBox.addEventListener("click", showFilterItems);
 
-    const resetBTN = document.querySelector(".reset");
-    if (!resetBTN)
-      throw new Error('Error! Element with class "reset" not found!');
-    resetBTN.addEventListener("click", resetFilters);
+  const resetBTN = document.querySelector(".reset");
+  if (!resetBTN)
+    throw new Error('Error! Element with class "reset" not found!');
+  resetBTN.addEventListener("click", resetFilters);
 
-    const copyBTN = document.querySelector(".copy");
-    if (!copyBTN)
-      throw new Error('Error! Element with class "copy" not found!');
-    copyBTN.addEventListener("click", toggleFilters);
+  const copyBTN = document.querySelector(".copy");
+  if (!copyBTN) throw new Error('Error! Element with class "copy" not found!');
+  copyBTN.addEventListener("click", toggleFilters);
 
   window.addEventListener("DOMContentLoaded", () => {
-
-
-    // const optionBox = document.querySelector(".sort-bar-select");
-    // if (!optionBox)
-    //   throw new Error('Error! Element with class "sort-bar-select" not found!');
-    // optionBox.addEventListener("click", addMethodSortToParamsObj);
+    const optionBox = document.querySelector(".sort-bar-select");
+    if (!optionBox)
+      throw new Error('Error! Element with class "sort-bar-select" not found!');
+    optionBox.addEventListener("click", addMethodSortToParamsObj);
     // const representaionProductsControllerBox =
     //   document.querySelector(".viev-products");
     // if (!representaionProductsControllerBox)
@@ -42,9 +39,6 @@ export function controllChanges() {
     //   toggleRepresentaionProducts
     // );
   });
-
-
-
 
   window.onload = checkValues;
 
