@@ -19,6 +19,7 @@ export function sortFoundItems(method: string, arr: IProducts[]) {
   let num = 0;
   arr.forEach((el) => {
     productItems.forEach((item) => {
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       if (el.id === +item.getAttribute("id")!) {
         (item as HTMLDivElement).style.order = `${num}`;
         num += 1;

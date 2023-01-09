@@ -11,7 +11,6 @@ export function getCartSum() {
     num += el.price;
   });
   sumBox.textContent = `Cart total: €${num}`;
-
 }
 
 export function getCartAmount() {

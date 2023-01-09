@@ -11,12 +11,12 @@ export function saveCart() {
 
 export function getCart() {
   if (localStorage.getItem("cart")) {
-    const arr = JSON.parse(localStorage.getItem("cart"));
+    const arr = JSON.parse(localStorage.getItem("cart") || "");
     data.products.forEach((el) => {
       if (arr.includes(el.id)) {
         basket.push(el);
       }
     });
   }
-  console.log(basket)
+  console.log(basket);
 }

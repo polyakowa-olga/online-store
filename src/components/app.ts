@@ -6,7 +6,7 @@ import { showError } from "./error/error";
 import { openElement } from ".././components/item/item";
 import { createBasket } from "../components/basket/basket";
 import { getParamsObj } from "./filter/chooseParamsObj";
-import { chooseParamsObj } from "./filter/chooseParamsObj";
+// import { chooseParamsObj } from "./filter/chooseParamsObj";
 
 export const enum PageId {
   MainPage = "main-page",
@@ -32,7 +32,6 @@ export function renderNewPage(idPage: string, i?: number) {
       showProducts();
 
       getParamsObj();
-
     } else if (idPage === `${PageId.ItemPage}`) {
       // document.location.search = "";
       mainSection.innerHTML = "";
