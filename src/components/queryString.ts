@@ -28,6 +28,11 @@ export function updateQueryString(obj: IChooseParams) {
     if (!str) str += `copy_link=${obj.copy_link}`;
     else if (str) str += `&copy_link=${obj.copy_link}`;
   }
+  if (obj.sort) {
+    if (!str) str += `sort=${obj.sort}`;
+    else if (str) str += `&sort=${obj.sort}`;
+  }
+
   document.location.search = str;
 }
 
@@ -59,6 +64,9 @@ export function getDataFromQueryString() {
       }
       if (key === "copy_link") {
         chooseParamsObj.copy_link = arrProp[1];
+      }
+      if (key === "sort") {
+        chooseParamsObj.sort = arrProp[1];
       }
     }
   }

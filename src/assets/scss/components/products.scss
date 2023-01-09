@@ -18,7 +18,7 @@
   flex: 1;
   padding: 0 1em;
   color: #fff;
-  background-color: #181a1c;
+  background-color: black;
   cursor: pointer;
   border-radius: 1rem;
   color: yellowgreen;
@@ -75,11 +75,18 @@ input:focus:-ms-input-placeholder {
 
 .view-products-small,
 .view-products-big {
+  padding: 2px;
+  border-radius: 5px;
   margin: 0px 10px;
-  width: 20px;
-  height: 20px;
-  background-color: black;
+  // width: 40px;
+  // height: 40px;
+  background-color: $color_btn_base;
   cursor: pointer;
+}
+
+.view-products-small.active,
+.view-products-big.active {
+  background-color: yellowgreen;
 }
 
 .products-items {

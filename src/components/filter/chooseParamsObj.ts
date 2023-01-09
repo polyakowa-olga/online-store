@@ -1,6 +1,7 @@
 import { IProducts } from "../item/item";
 import data = require("../../assets/data.json");
 import { show } from "./showFilterItems";
+import { showNumberEachParam } from "./showNumberEachParam";
 
 export interface IChooseParams {
   category: string[];
@@ -8,6 +9,7 @@ export interface IChooseParams {
   price: number[];
   stock: number[];
   copy_link?: string;
+  sort?: string;
 }
 
 export const chooseParamsObj: IChooseParams = {
@@ -18,7 +20,6 @@ export const chooseParamsObj: IChooseParams = {
 };
 
 export function sort() {
-  const res: string[] = [];
   let result: IProducts[] = [];
 
   if (chooseParamsObj.category.length) {
@@ -97,12 +98,9 @@ export function sort() {
     });
     result = resultStock.slice();
   }
+  showNumberEachParam(result);
 
-  result.forEach((el) => {
-    res.push(`${el.id}`);
-  });
-
-  return res;
+  return result;
 }
 
 export function getParamsObj() {
