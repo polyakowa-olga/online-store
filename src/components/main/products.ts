@@ -55,7 +55,21 @@ export function showProducts() {
   searchBar.classList.add("search-bar");
   viewProducts.classList.add("view-products");
   viewProductsSmall.classList.add("view-products-small");
+  //////////////////////////////////////////////// olga
+  const smallImg = document.createElement("img");
+  smallImg.src = "./icons/small-mark.svg";
+  smallImg.style.width = "40px";
+  smallImg.style.height = "40px";
+  viewProductsSmall.append(smallImg);
+  //////////////////////////////////////////////////
   viewProductsBig.classList.add("view-products-big");
+  //////////////////////////////////////////////// olga
+  const bigImg = document.createElement("img");
+  bigImg.src = "./icons/big-mark.svg";
+  bigImg.style.width = "40px";
+  bigImg.style.height = "40px";
+  viewProductsBig.append(bigImg);
+  //////////////////////////////////////////////////
   sortBarSelect.classList.add("sort-bar-select");
   amountProdunctsSpan.classList.add("amount-products"); // olga
 

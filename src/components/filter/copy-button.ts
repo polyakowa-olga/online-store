@@ -1,4 +1,5 @@
 import { chooseParamsObj } from "./chooseParamsObj";
+import { updateQueryString } from "../queryString";
 
 export function toggleFilters(event: Event) {
   const ev = event.target;
@@ -17,6 +18,7 @@ export function copyFilters(ev: Element) {
   console.log(chooseParamsObj.copy_link);
   ev.classList.add("save");
   ev.textContent = "Return Filters";
+  updateQueryString(chooseParamsObj)
 }
 
 export function returnFilters() {

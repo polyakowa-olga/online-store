@@ -1,6 +1,7 @@
 import { IProducts } from "../item/item";
 
 export function showNumberEachParam(params: IProducts[]) {
+  if (document.location.search === "") return;
   const list = document.querySelectorAll(".items-amount");
   const categories = params.map((el) => el.category);
   const brandes = params.map((el) => el.brand);
