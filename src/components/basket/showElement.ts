@@ -2,7 +2,7 @@ import { IProducts } from "../item/item";
 import { openElement } from "../item/openItem";
 import { PageId } from ".././app"; // olga
 import { basket } from "./basket";
-import { summerPrices } from "./basket";
+import { getCartSum } from "./showDataInHeader";
 
 export function basketElements(
   Element: IProducts,
@@ -88,9 +88,18 @@ export function basketElements(
   quantityControl.id = "quantity-control";
   quantityControl.innerText = `${numberOfProduct}`;
   let numberOfProducts = basket.length;
-  let PriceOfProducts = summerPrices();
+  let PriceOfProducts = getCartSum();
+
+  const numBox = document.getElementById("num_box") as HTMLSpanElement;
+  numBox.innerHTML = `${numberOfProducts}`;
+  const sumBoxSpan = document.getElementById("sum_box_span") as HTMLSpanElement;
+  sumBoxSpan.innerText = `€${PriceOfProducts}`;
 
   buttonPlusControl.addEventListener("click", () => {
+    const sumBoxSpan = document.getElementById(
+      "sum_box_span"
+    ) as HTMLSpanElement;
+
     const showNumberProducts = document.getElementById(
       "total_Elements_Span"
     ) as HTMLSpanElement;
@@ -100,21 +109,29 @@ export function basketElements(
       "total_Prices_Span"
     ) as HTMLSpanElement;
     PriceOfProducts = Number(showPriceProducts.textContent);
+    // numberOfBox = Number(numBox.textContent);
 
     if (numberOfProduct === Element.stock) {
       numberOfProduct = Element.stock;
     } else {
       numberOfProduct += 1;
       numberOfProducts += 1;
+      // numberOfBox = numberOfProducts;
       // basket.push(Element);
       PriceOfProducts += Element.price;
     }
     quantityControl.innerText = `${numberOfProduct}`;
     showNumberProducts.innerHTML = `${numberOfProducts}`;
+    numBox.innerHTML = `${numberOfProducts}`;
     showPriceProducts.innerText = `${PriceOfProducts}`;
+    sumBoxSpan.innerHTML = `€${PriceOfProducts}`;
   });
 
   buttonMinusControl.addEventListener("click", () => {
+    const sumBoxSpan = document.getElementById(
+      "sum_box_span"
+    ) as HTMLSpanElement;
+
     const showNumberProducts = document.getElementById(
       "total_Elements_Span"
     ) as HTMLSpanElement;
@@ -129,14 +146,17 @@ export function basketElements(
       for (let i = 0; i < basket.length; i++) {
         if (basket[i] === Element) {
           basket.splice(i, 1);
-          numberOfProducts = basket.length;
+          numberOfProducts -= 1;
           PriceOfProducts -= Element.price;
           const cartBlockDelete = cartBlock.parentNode as HTMLDivElement;
           cartBlockDelete.removeChild(cartBlock);
         }
       }
       showNumberProducts.innerHTML = `${numberOfProducts}`;
+      numBox.innerHTML = `${numberOfProducts}`;
       showPriceProducts.innerText = `${PriceOfProducts}`;
+      sumBoxSpan.innerHTML = `€${PriceOfProducts}`;
+      numberOfProducts = basket.length;
 
       return;
     } else {
@@ -144,7 +164,9 @@ export function basketElements(
       numberOfProducts -= 1;
       PriceOfProducts -= Element.price;
       showNumberProducts.innerHTML = `${numberOfProducts}`;
+      numBox.innerHTML = `${numberOfProducts}`;
       showPriceProducts.innerText = `${PriceOfProducts}`;
+      sumBoxSpan.innerHTML = `€${PriceOfProducts}`;
 
       // basket.pop(Element);
     }

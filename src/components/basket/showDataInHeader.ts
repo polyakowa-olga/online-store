@@ -1,17 +1,21 @@
 import { basket } from "./basket";
-import { getCart } from "../basket/saveCart";
 
 export function getCartSum() {
-  const sumBox = document.querySelector(".header__sum-box");
-
-  if (!sumBox)
+  const sumBoxP = document.querySelector(".header__sum-box") as HTMLSpanElement;
+  const sumBoxSpan = document.createElement("span");
+  if (!sumBoxP)
     throw new Error("Error! Element with class '.header__sum-box' not found");
 
-  let sum = 0;
+  let num = 0;
   basket.forEach((el) => {
-    sum += el.price;
+    num += el.price;
   });
-  sumBox.textContent = `Cart total: €${sum}`;
+  // sumBoxSpan.textContent = `Cart total: €${num}`;
+  sumBoxP.append(sumBoxSpan);
+  sumBoxSpan.id = "sum_box_span";
+  sumBoxSpan.innerText = `€${num}`;
+  sumBoxP.innerHTML = sumBoxP.innerText = `Total:` + sumBoxSpan.outerHTML;
+  return num;
 }
 
 export function getCartAmount() {
@@ -23,12 +27,11 @@ export function getCartAmount() {
     );
 
   const num: number = basket.length;
+  numBox.id = "num_box";
   numBox.textContent = `${num}`;
-  console.log(basket.length);
 }
 
 export function showDataInHeader() {
-  getCart();
   getCartSum();
   getCartAmount();
 }
