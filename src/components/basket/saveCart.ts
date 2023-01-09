@@ -14,7 +14,7 @@ export function saveCart() {
 
 export function getCart() {
   if (localStorage.getItem("cart")) {
-    cartStorage = JSON.parse(localStorage.getItem("cart"));
+    cartStorage = JSON.parse(localStorage.getItem("cart") || "");
   }
   console.log(cartStorage);
   basket.length = 0;

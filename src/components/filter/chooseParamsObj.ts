@@ -107,6 +107,7 @@ export function getParamsObj() {
   const list = document.querySelectorAll(".input-box");
   list.forEach((el) => {
     if (el.closest("#fl-category")) {
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       if (chooseParamsObj.category.includes(el.childNodes[1].textContent!)) {
         el.childNodes.forEach((element) => {
           (<Element>element).classList.add("active");
@@ -114,6 +115,7 @@ export function getParamsObj() {
       }
     }
     if (el.closest("#fl-brand")) {
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       if (chooseParamsObj.brand.includes(el.childNodes[1].textContent!)) {
         el.childNodes.forEach((element) => {
           (<Element>element).classList.add("active");
