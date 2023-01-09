@@ -1,19 +1,8 @@
 import { IProducts } from "../item/item";
 import { basketElements } from "./showElement";
+import { getCartSum } from "./showDataInHeader";
 
 export const basket: IProducts[] = [];
-
-export const summerPrices = function () {
-  let sum = 0;
-  for (let i = 0; i < basket.length; i++) {
-    if (basket.length === 0) {
-      return sum;
-    } else {
-      sum += basket[i].price;
-    }
-  }
-  return sum;
-};
 
 export function createBasket() {
   // const main = document.querySelector(".main") as HTMLDivElement;
@@ -80,7 +69,7 @@ export function createBasket() {
   totalElementsP.innerHTML = totalElementsP.innerText =
     `Products:` + totalElementsSpan.outerHTML;
   totalPricesSpan.id = "total_Prices_Span";
-  totalPricesSpan.innerText = `${summerPrices()}`;
+  totalPricesSpan.innerText = `${getCartSum()}`;
   totalPricesP.innerHTML = totalPricesP.innerText =
     `Total: €` + totalPricesSpan.outerHTML;
 

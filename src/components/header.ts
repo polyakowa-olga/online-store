@@ -22,7 +22,7 @@ function renderLogo() {
 }
 
 function renderSumBox() {
-  const sumBox = document.createElement("span");
+  const sumBox = document.createElement("p");
   sumBox.classList.add("header__sum-box");
   sumBox.textContent = "Cart total: $0";
   return sumBox;
