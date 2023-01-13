@@ -20,15 +20,27 @@ export interface IProducts {
 }
 
 export function component(Element: IProducts) {
-  const id = Element.id;
-  const name = Element.title;
-  const path = Element.thumbnail;
-  const brand = Element.brand;
-  const category = Element.category;
-  const price = Element.price;
-  const discount = Element.discountPercentage;
-  const rating = Element.rating;
-  const stock = Element.stock;
+  const {
+    id,
+    title: name,
+    thumbnail: path,
+    brand,
+    category,
+    price,
+    discountPercentage: discount,
+    rating,
+    stock,
+  } = Element; // olga
+
+  // const id = Element.id;
+  // const name = Element.title;
+  // const path = Element.thumbnail;
+  // const brand = Element.brand;
+  // const category = Element.category;
+  // const price = Element.price;
+  // const discount = Element.discountPercentage;
+  // const rating = Element.rating;
+  // const stock = Element.stock;
 
   const blockElement = document.createElement("div");
   const productItem = document.createElement("div");

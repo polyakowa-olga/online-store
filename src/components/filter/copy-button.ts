@@ -11,22 +11,22 @@ export function toggleFilters(event: Event) {
 }
 
 export function copyFilters(ev: Element) {
-  chooseParamsObj.copy_link = document.location.search
+  chooseParamsObj.copyLink = document.location.search
     .substring(1)
     .replace(/=/g, "%3D")
     .replace(/&/g, "%26");
-  console.log(chooseParamsObj.copy_link);
+  console.log(chooseParamsObj.copyLink);
   ev.classList.add("save");
   ev.textContent = "Return Filters";
   updateQueryString(chooseParamsObj);
 }
 
 export function returnFilters() {
-  if (chooseParamsObj.copy_link) {
-    const temp = chooseParamsObj.copy_link
+  if (chooseParamsObj.copyLink) {
+    const temp = chooseParamsObj.copyLink
       .replace(/%3D/g, "=")
       .replace(/%26/g, "&");
-    delete chooseParamsObj.copy_link;
+    delete chooseParamsObj.copyLink;
     document.location.search = temp;
   }
 }

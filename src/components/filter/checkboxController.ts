@@ -1,4 +1,5 @@
 import { IChooseParams } from "./chooseParamsObj";
+import { Params } from "./drawFilters/index";
 
 export function getInputValue(
   event: Event,
@@ -14,7 +15,7 @@ export function getInputValue(
   if (!nam || !nam.lastChild)
     throw new Error('Error! Element with class "filter-params" not found!');
   const content = nam.lastChild.textContent as string;
-  if (param === "category" || param === "brand") {
+  if (param === Params.category || param === Params.brand) {
     if (filterParams[param].includes(content)) {
       checkboxValues.push(content, "del");
       nam.childNodes.forEach((el) => {

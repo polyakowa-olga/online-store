@@ -4,19 +4,21 @@ import { sort } from "./chooseParamsObj";
 import { updateQueryString } from "../queryString";
 import { sortFoundItems } from "../sort/sortFoundItems";
 import { IProducts } from "../item/item";
+import { ParamId } from "./drawFilters/index";
+import { Params } from "./drawFilters/index";
 
 export function showFilterItems(event: Event) {
   const ev = event.target as HTMLElement;
   let param = "";
-  if (ev.closest("#fl-category")) {
-    param = "category";
+  if (ev.closest(`#${ParamId.category}`)) {
+    param = Params.category;
   }
-  if (ev.closest("#fl-brand")) {
-    param = "brand";
+  if (ev.closest(`#${ParamId.brand}`)) {
+    param = Params.brand;
   }
   const checkboxChange = getInputValue(event, param, chooseParamsObj);
   if (checkboxChange) {
-    if (param === "category" || param === "brand") {
+    if (param === Params.category || param === Params.brand) {
       if (checkboxChange[1] == "add") {
         chooseParamsObj[param].push(checkboxChange[0]);
       } else {
@@ -71,28 +73,26 @@ export function show() {
     });
   }
 
+  const enum sortingOptions {
+    priceASC = "Sort by price ASC",
+    priceDESC = "Sort by price DESC",
+    ratingASC = "Sort by rating ASC",
+    ratingDESC = "Sort by rating DESC",
+  }
+
+  const SortingValues = {
+    priceASC: sortingOptions.priceASC,
+    priceDESC: sortingOptions.priceDESC,
+    ratingASC: sortingOptions.ratingASC,
+    ratingDESC: sortingOptions.ratingDESC,
+  };
+
   if (chooseParamsObj.sort) {
     const optionBox = document.querySelector(
       ".sort-bar-select"
     ) as HTMLSelectElement;
-    switch (chooseParamsObj.sort) {
-      case "priceASC":
-        optionBox.value = "Sort by price ASC";
-
-        break;
-      case "priceDESC":
-        optionBox.value = "Sort by price DESC";
-
-        break;
-      case "ratingASC":
-        optionBox.value = "Sort by rating ASC";
-
-        break;
-      case "ratingDESC":
-        optionBox.value = "Sort by rating DESC";
-
-        break;
-    }
+    optionBox.value =
+      SortingValues[chooseParamsObj.sort as keyof typeof SortingValues];
     sortFoundItems(chooseParamsObj.sort, arr);
   }
 }

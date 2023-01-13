@@ -1,13 +1,13 @@
-import { checkValues } from "./dualSlider";
-import { showFilterItems } from "./showFilterItems";
-import { resetFilters } from "./reset-button";
-import { toggleFilters } from "./copy-button";
-import { getDataFromQueryString } from "../queryString";
-import { showNumberItems } from "../sort/showNumberItems";
-import { addMethodSortToParamsObj } from ".././sort/sortFoundItems";
+import { checkValues } from "./filter/dualSlider";
+import { showFilterItems } from "./filter/showFilterItems";
+import { resetFilters } from "./filter/reset-button";
+import { toggleFilters } from "./filter/copy-button";
+import { getDataFromQueryString } from "./queryString";
+import { showNumberItems } from "./sort/showNumberItems";
+import { addMethodSortToParamsObj } from "./sort/sortFoundItems";
 //import { toggleRepresentaionProducts } from ".././representationProducts.ts/toggleRepresentation";
-import { saveCart } from "../basket/saveCart";
-import { getCart } from "../basket/saveCart";
+import { saveCart } from "./basket/saveCart";
+import { getCart } from "./basket/saveCart";
 
 export function controllChanges() {
   const paramBox = document.querySelector(".filter-params");
@@ -16,14 +16,14 @@ export function controllChanges() {
 
   paramBox.addEventListener("click", showFilterItems);
 
-  const resetBTN = document.querySelector(".reset");
-  if (!resetBTN)
+  const resetBtn = document.querySelector(".reset");
+  if (!resetBtn)
     throw new Error('Error! Element with class "reset" not found!');
-  resetBTN.addEventListener("click", resetFilters);
+  resetBtn.addEventListener("click", resetFilters);
 
-  const copyBTN = document.querySelector(".copy");
-  if (!copyBTN) throw new Error('Error! Element with class "copy" not found!');
-  copyBTN.addEventListener("click", toggleFilters);
+  const copyBtn = document.querySelector(".copy");
+  if (!copyBtn) throw new Error('Error! Element with class "copy" not found!');
+  copyBtn.addEventListener("click", toggleFilters);
 
   window.addEventListener("DOMContentLoaded", () => {
     const optionBox = document.querySelector(".sort-bar-select");

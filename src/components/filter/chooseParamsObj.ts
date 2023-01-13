@@ -8,7 +8,7 @@ export interface IChooseParams {
   brand: string[];
   price: number[];
   stock: number[];
-  copy_link?: string;
+  copyLink?: string;
   sort?: string;
 }
 

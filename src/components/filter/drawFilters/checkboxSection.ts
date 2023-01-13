@@ -1,9 +1,11 @@
+import { IAmountItemsInCategory } from "./filterParam";
+
 function drawCheckboxFilter(
   filterBox: HTMLElement,
   name: string,
   id: string,
   param: string,
-  arr: [string, number][]
+  arr: IAmountItemsInCategory[]
 ) {
   const category = document.createElement("div");
   category.classList.add("category");
