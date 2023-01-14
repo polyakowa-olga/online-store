@@ -88,12 +88,16 @@ export function createBasket() {
 
   let index = 1;
   const quantityControl = document.getElementById("quantity-control");
-  const addStock = Number(quantityControl?.textContent);
+  const count = Number(quantityControl?.textContent);
   for (let i = 0; i < basket.length; i++) {
-    const Element = basket[i];
-    prodItems.appendChild(basketElements(Element, index, addStock));
+    const id = basket[i].id;
+    const price = basket[i].price;
+    prodItems.appendChild(basketElements(id, index, count, price));
     index++;
   }
 
   return cartWrapper;
 }
+// Вообще в корзине нам не нужно хранить ВСЮ информацию о товарах.
+// Конкретно корзина должна знать об айди товара и о своей общей сумме.
+// А уже на странице товаров в корзине надо по айдишникам достать полную информацию о товарах
