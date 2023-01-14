@@ -1,0 +1,64 @@
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+
+    background-color: $color_base-dark;
+
+    padding: 1em 2em;
+
+}
+
+.header__logo {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 5px;
+    background-color: wheat;
+    padding: 0 10px;
+
+}
+
+.logo__img {
+    width: 100px;
+    height: 100px;
+    background-image: './images/logo.jpg';
+    background-size: cover;
+}
+
+.logo__text {
+    font-size: 48px;
+}
+.header__sum-box {
+    width: 30%;
+    height: 50px;
+    @include flex-center();
+    border-radius: 5px;
+    color: wheat;
+    font-size: 35px;
+}
+
+.header__basket {
+     width: 15%;
+    background: wheat;
+    border-radius: 5px;
+    padding: 10px;
+    @include flex-center();
+    font-size: 24px;
+
+    position: relative;
+}
+
+.basket__item-amount {
+    color: red;
+    padding: 5px;
+    @include flex-center();
+    font-size: 50px;
+    position: absolute;
+    top: 20%;
+    left: 45%;
+    background-color:  rgba(32, 138, 170, 0.5);
+}

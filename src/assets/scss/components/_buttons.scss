@@ -1,0 +1,21 @@
+.btn {
+    flex-shrink: 0;
+    font-size: 1em;
+    padding: 0.5em;
+    color: white;
+    background-color: $color_btn_base;
+    border-radius: 3px;
+    transition: all 0.9s;
+    cursor: pointer;
+    border: solid 1px black;
+    &:hover {
+        background-color: $color_btn_hover;
+        color: $color_base-dark;
+    }
+
+}
+
+.copy.save {
+    background-color: rgb(77, 109, 151);
+}
+

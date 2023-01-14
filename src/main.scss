@@ -1,0 +1,24 @@
+//abstracts
+@import "./assets/scss/abstracts/variables";
+@import "./assets/scss/abstracts/mixins";
+@import "./assets/scss/abstracts/fonts";
+
+//base
+@import "./assets/scss/base/reset";
+@import "./assets/scss/base/base";
+
+//components
+@import "./assets/scss/components/links";
+@import "./assets/scss/components/buttons";
+@import "./assets/scss/components/basket.scss";
+@import "./assets/scss/components/products";
+@import "./assets/scss/components/items";
+@import "./assets/scss/components/filter-common";
+@import "./assets/scss/components/filter-checkbox";
+@import "./assets/scss/components/filter-range";
+@import "./assets/scss/components/openItem";
+
+//layout
+@import "./assets/scss/layout/footer";
+@import "./assets/scss/layout/header";
+@import "./assets/scss/layout/content";

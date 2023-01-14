@@ -1,0 +1,41 @@
+._filter-box {
+  width: 350px;
+  border: solid 2px $color_base-light;
+  border-radius: 5px;
+  background-color: $color_base-white;
+  padding: 0.5em;
+}
+
+.filter-container {
+  background-color: $color_base-dark;
+  @include flex-between ($direction: column);
+  border-radius: 5px;
+  padding: 0.5em;
+}
+
+.filter-btns {
+  padding: 0 10px;
+  width: 100%;
+  @include flex-between();
+  flex-wrap: nowrap;
+}
+
+.filter-params {
+  @include flex-between ($direction: column);
+
+}
+
+.filter-title {
+  margin: 0.5em;
+}
+
+.filter-list-wrapper {
+  max-height: 200px;
+  overflow-y: scroll;
+  border: solid 1px black;
+  border-radius: 5px;
+}
+
+.category {
+  overflow: hidden;
+}

@@ -1,0 +1,30 @@
+
+
+
+.footer {
+    width: 100%;
+    max-width: 1820px;
+    height: 100%;
+    max-height: 100px;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: rgb(121, 68, 68);
+    @include flex();
+    justify-content: flex-end;
+
+    margin-top: auto;
+}
+
+.year {
+    width: 40px;
+    height: 35px;
+    border: solid 3px wheat;
+    border-radius: 5px;
+    padding: 5px;
+    @include flex-center();
+    margin-right: auto;
+}
+
+.RSS-icon {
+    width: 100px;
+}

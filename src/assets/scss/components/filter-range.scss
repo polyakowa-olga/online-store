@@ -1,0 +1,95 @@
+div.range-input {
+    position: relative;
+    width: 330px;
+    height: 100px;
+    float: none;
+    text-align: center;
+    background-color: $color_base-light;
+    color: white;
+    border-radius: 3px;
+  }
+  
+  input[type="range"] {
+    pointer-events: none;
+    position: absolute;
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    border: none;
+    border-radius: 5px;
+    background: $color_range_input;
+    box-shadow: inset 0 1px 0 0 darken($color_range_input, 15%), inset 0 -1px 0 0 darken($color_range_input, 10%);
+    -webkit-box-shadow: inset 0 1px 0 0 darken($color_range_input, 15%), inset 0 -1px 0 0 darken($color_range_input, 10%);
+    overflow: hidden;
+    left: 0;
+    top: 50px;
+    width: 100%;
+    outline: none;
+    height: 1em;
+    margin: 0;
+    padding: 0;
+  }
+  
+  input[type="range"]::-webkit-slider-thumb {
+    cursor: pointer;
+    pointer-events: all;
+    position: relative;
+    z-index: 1;
+    outline: 0;
+    -webkit-appearance: none;
+    width: 1em;
+    height: 1em;
+    border: none;
+    border-radius: 50%;
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, lighten($color_range_thumb, 60%)), color-stop(100%, $color_range_thumb));
+    background-image: -webkit-linear-gradient(top, lighten($color_range_thumb, 60%) 0, $color_range_thumb 100%);
+    background-image: linear-gradient(to bottom, lighten($color_range_thumb, 60%) 0, $color_range_thumb 100%);
+  }
+  
+  input[type="range"]::-moz-range-thumb {
+    cursor: pointer;
+    pointer-events: all;
+    position: relative;
+    z-index: 10;
+    -moz-appearance: none;
+    width: 1em;
+    height: 1em;
+    border: none;
+    border-radius: 50%;
+    background-image: linear-gradient(to bottom, lighten($color_range_thumb, 60%) 0, $color_range_thumb 100%);
+  }
+  
+  input[type="range"]::-ms-thumb {
+    cursor: pointer;
+    pointer-events: all;
+    position: relative;
+    z-index: 10;
+    -ms-appearance: none;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    border: 0;
+    background-image: linear-gradient(to bottom, lighten($color_range_thumb, 60%) 0, $color_range_thumb 100%);
+  }
+  
+  input[type=range]::-moz-range-track {
+    position: relative;
+    z-index: -1;
+    background-color: $color_btn_base;
+    border: 0;
+  }
+  
+  input[type=range]:last-of-type::-moz-range-track {
+    -moz-appearance: none;
+    background: none transparent;
+    border: 0;
+  }
+  
+  input[type=range]::-moz-focus-outer {
+    border: 0;
+  }
+  
+  .values {
+    height: 50px;
+    @include flex-center();
+    color: $color_accent;
+  }
